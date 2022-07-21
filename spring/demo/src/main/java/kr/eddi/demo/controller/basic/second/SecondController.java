@@ -30,34 +30,34 @@ public class SecondController {
     public String registerTest() {
         log.info("등록(register) 테스트");
 
-        return "/basic/second/register";
+        return "/basic/second/board/register";
     }
 
     @GetMapping("/modify-test")
     public String modifyTest() {
         log.info("수정(modify) 테스트");
 
-        return "/basic/second/modify";
+        return "/basic/second/board/modify";
     }
 
     @GetMapping("/delete-test")
     public String removeTest() {
         log.info("삭제(delete) 테스트");
 
-        return "/basic/second/delete";
+        return "/basic/second/board/delete";
     }
 
     @GetMapping("/read-test")
     public String readTest() {
         log.info("읽기(read) 테스트");
 
-        return "/basic/second/read";
+        return "/basic/second/board/read";
     }
 
     @GetMapping("/list-test")
     public String listTest() {
         log.info("리스트 보기(list) 테스트");
 
-        return "/basic/second/list";
+        return "/basic/second/board/list";
     }
 }
