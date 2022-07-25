@@ -1,8 +1,7 @@
 package kr.eddi.demo.entity.basic.fourth;
 
-import lombok.Getter;
-
-@Getter
+// 1. 내가 어떤 정보를 이 클래스를 통해 제어하려고 하는가 ? 수열
+// 2. 이 정보에 영향을 미칠 수 있는 인자는 어떤것들이 있는가 ? 수열 패턴, 수열 개수
 public class Series {
 
     private final int FIBONACCI_SERIES = 1;
