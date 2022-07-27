@@ -21,7 +21,7 @@ public class SixthCleanDiceGameController {
         createPlayer();
         gameStart();
 
-        return "고고싱";
+        return checkWinner();
     }
 
     public void createPlayer() {
@@ -51,12 +51,25 @@ public class SixthCleanDiceGameController {
     // 유틸리티를 사용해서 각 플레이어들에게 옵션 적용
     public void gameStart() {
         for (int i = 0; i < playerNum; i++) {
-            //players[i].gameStart();
+            players[i].gameStart(players);
         }
     }
     
     // 최종 승자 판정
-    public void checkWinner() {
-        
+    // 현재 이 부분은 일반화하지 않았고 2명이라 가정하고 진행함
+    // 실제로는 Collection에 넣고 sort() 시키면 정렬이 됨
+    // 여기선 그냥 두명 가정하고 만듭시다.
+    // 이거까지 또 일반화하면 ... 머리 터질것 같으니까 ㅋㅋㅋ
+    public String checkWinner() {
+        int playerScore1 = players[0].getScore().getTotalScore();
+        int playerScore2 = players[1].getScore().getTotalScore();
+
+        if (playerScore1 > playerScore2) {
+            return "플레이어 1 승리!";
+        } else if (playerScore1 < playerScore2){
+            return "플레이어 2 승리!";
+        } else {
+            return "무승부";
+        }
     }
 }
