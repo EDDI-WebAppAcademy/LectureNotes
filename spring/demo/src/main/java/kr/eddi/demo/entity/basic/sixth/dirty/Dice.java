@@ -1,4 +1,4 @@
-package kr.eddi.demo.entity.basic.sixth;
+package kr.eddi.demo.entity.basic.sixth.dirty;
 
 import kr.eddi.demo.utility.basic.third.CustomRandom;
 import lombok.Getter;
