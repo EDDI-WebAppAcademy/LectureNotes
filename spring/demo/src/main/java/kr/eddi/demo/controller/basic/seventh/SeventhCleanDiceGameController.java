@@ -16,6 +16,7 @@ import java.util.List;
 public class SeventhCleanDiceGameController {
 
     private final int DEFAULT_PLAYER_NUM = 2;
+    private final int DEATH_SCORE = -4444;
     private List<Player> players;
     private int playerNum;
 
@@ -113,19 +114,32 @@ public class SeventhCleanDiceGameController {
         // 실제 Comparable은 interface임을 볼 수 있다.
         // 해당 인터페이스는 compareTo 프로토타입을 가지고 있으므로
         // 우리가 정렬하고자 하는 Player 클래스에 이에 대한 구현체가 필요하다.
+        log.info("정렬전: " + String.valueOf(players));
+        
         Collections.sort(players);
 
-        log.info(String.valueOf(players));
+        log.info("정렬후: " + String.valueOf(players));
 
-        int playerScore1 = players.get(0).getScore().getTotalScore();
-        int playerScore2 = players.get(1).getScore().getTotalScore();
+        int maxPlayerScore = acquirePlayerTotalScore(playerNum - 1);
 
-        if (playerScore1 > playerScore2) {
-            return "플레이어 1 승리!";
-        } else if (playerScore1 < playerScore2){
-            return "플레이어 2 승리!";
-        } else {
-            return "무승부";
+        if (maxPlayerScore == DEATH_SCORE) { return "전원 탈락!!!"; }
+
+        List<Integer> sameScoreIdxList = new ArrayList<>();
+
+        for (int i = playerNum - 2; i >= 0; i--) {
+            int tmpScore = acquirePlayerTotalScore(i);
+
+            if (maxPlayerScore != tmpScore) { break; }
+
+            sameScoreIdxList.add(i);
         }
+
+        if (sameScoreIdxList.size() > 0) { return "무승부입니다!"; }
+
+        return "플레이어: " + players.get(playerNum - 1).getNickName() + " 님이 승리하였습니다!";
+    }
+
+    public int acquirePlayerTotalScore(int idx) {
+        return players.get(idx).getScore().getTotalScore();
     }
 }

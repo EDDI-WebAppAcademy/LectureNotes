@@ -41,7 +41,7 @@ public class Player implements Comparable<Player> {
 
         if (srcScore > dstScore) {
             return 1;
-        } else if (srcScore > dstScore) {
+        } else if (srcScore < dstScore) {
             return -1;
         } else {
             return 0;
