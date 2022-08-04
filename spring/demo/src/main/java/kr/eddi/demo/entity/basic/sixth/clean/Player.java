@@ -15,16 +15,20 @@ public class Player {
         score = new Score();
     }
 
+    // 이와 같이 Player를 players로 활용하게 되면 가독성이 떨어지고
+    // 코드 자체의 혼동을 유발하게 됨 (더티)
     public void gameStart(Player players[]) {
-        for (int i = 0; i < players.length; i++) {
-            int diceNum = Dice.rollDice();
+        int diceNum = Dice.rollDice();
+        score.addScore(diceNum);
+
+        // 매우 더티함 ...
+        // 추후 리팩토링 필요
+        if (diceNum % 2 == 0) {
+            Dice specialDice = new Dice();
+            diceNum = Dice.rollDice();
             score.addScore(diceNum);
 
-            if (diceNum % 2 == 0) {
-                diceNum = Dice.rollDice();
-                Dice specialDice = new Dice();
-                score.addScore(diceNum);
-
+            for (int i = 0; i < players.length; i++) {
                 specialDice.checkSpecialDice(players, diceNum, i);
             }
         }
