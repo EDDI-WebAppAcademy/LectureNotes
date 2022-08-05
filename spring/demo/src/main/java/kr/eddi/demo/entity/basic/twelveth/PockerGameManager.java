@@ -39,6 +39,10 @@ public class PockerGameManager {
 
     // 11. 최종 승자 판정
     public Player dicisionWinner() {
-        return
+        return new Player();
+    }
+
+    public Boolean isGameFinish() {
+        return true;
     }
 }
