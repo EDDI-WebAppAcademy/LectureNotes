@@ -21,7 +21,7 @@ public class PockerGameController { // URL 매니저
         
         // 1. 게임 매니저를 생성한다.
         // 2. 게임에 참여할 플레이어들을 생성한다. <- num: 2
-        //pockerGameManager = new PockerGameManager(PLAYER_NUM);
+        pockerGameManager = new PockerGameManager(PLAYER_NUM);
         // 3. 초기 베팅 머니를 부과한다.
         // 4. 참여 순서대로 플레이어들에게 패를 돌린다.
         // 5. 플레이어들은 공개할 패를 선택한다.
@@ -30,11 +30,11 @@ public class PockerGameController { // URL 매니저
         // 8. 추가패를 받는다.
         // 9. 베팅 머니 추가
         // 10. 6 ~ 9번이 반복된다 -> 추가패를 4번 받을때까지
-        //pockerGameManager.startGame();
+        pockerGameManager.startGame();
         // 11. 최종 승자 판정
-        //pockerGameManager.dicisionWinner();
+        pockerGameManager.dicisionWinner();
 
-        PockerCard pockerCard = new PockerCard();
+        //PockerCard pockerCard = new PockerCard();
 
         return "0";
     }

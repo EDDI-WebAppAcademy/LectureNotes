@@ -33,7 +33,7 @@ public class PockerGameManager {
         // 9. 베팅 머니 추가
         // 10. 6 ~ 9번이 반복된다 -> 추가패를 4번 받을때까지
         do {
-            roundManager.playGame(playerManager);
+            roundManager.playPockerGame(playerManager);
         } while (isGameFinish());
     }
 

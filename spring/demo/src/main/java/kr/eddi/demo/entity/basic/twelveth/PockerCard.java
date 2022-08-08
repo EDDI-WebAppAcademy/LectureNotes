@@ -1,23 +1,46 @@
 package kr.eddi.demo.entity.basic.twelveth;
 
-import java.util.HashMap;
-import java.util.Map;
+import lombok.ToString;
 
+import java.util.*;
+
+@ToString
 public class PockerCard {
     // 1. 카드 문양(CardShape): 스페이드, 다이아, 하트, 클로버
     // 2. 카드 문자(CardCharacter): K, Q, J, 10, 9, 8, 7, 6, 5, 4, 3, 2, ACE
-    private Map<PockerCardShape, PockerCardCharacter> cards;
+    private Map<Integer, Map<PockerCardShape, PockerCardCharacter>> cards;
+    private Map<PockerCardShape, PockerCardCharacter> cardValues;
 
     public PockerCard() {
+        int cnt = 0;
+
         cards = new HashMap<>();
 
         // 한 개 뽑힌 결과 <- 뽑을 리스트들
         // foreach(한 개 뽑힌 결과: 뽑을 리스트들) 형태로 사용함
         // >>> 이중 해쉬로 변경 필요 <<<
+        // key: 0, value: <Shape, Character> <<<---
+        // 안 된다고 우왕좌왕하면서 이것 저것 시도해보는 것 보다
+        // 안되는 원인을 파악하고 이에 대한 해결 전략을 구성하는것이 중요합니다.
+
         for (PockerCardShape pockerCardShape: PockerCardShape.values()) {
-            for (PockerCardCharacter pockerCardCharacter: PockerCardCharacter.values()) {
-                cards.put(pockerCardShape, pockerCardCharacter);
+            for (PockerCardCharacter pockerCardCharacter : PockerCardCharacter.values()) {
+                cardValues = new HashMap<>();
+                cardValues.put(pockerCardShape, pockerCardCharacter);
+
+                cards.put(cnt++, cardValues);
             }
+        }
+
+        System.out.println("Card: " + cards);
+    }
+
+    public void shuffle() {
+        List keys = new ArrayList(cards.keySet());
+        Collections.shuffle(keys);
+
+        for (Object object: keys) {
+            System.out.println("After Shuffle Card: " + cards.get(object));
         }
     }
 }
