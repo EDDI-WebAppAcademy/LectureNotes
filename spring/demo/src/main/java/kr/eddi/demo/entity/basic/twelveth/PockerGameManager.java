@@ -31,10 +31,10 @@ public class PockerGameManager {
         // 7. 가장 높은 패에게 턴 우선권을 제공한다.
         // 8. 추가패를 받는다.
         // 9. 베팅 머니 추가
-        // 10. 6 ~ 9번이 반복된다 -> 추가패를 4번 받을때까지
         do {
             roundManager.playPockerGame(playerManager);
         } while (isGameFinish());
+        // 10. 6 ~ 9번이 반복된다 -> 추가패를 4번 받을때까지
     }
 
     // 11. 최종 승자 판정
@@ -43,6 +43,8 @@ public class PockerGameManager {
     }
 
     public Boolean isGameFinish() {
+        if (roundManager.getCurrentRound() == 5) { return false; }
+
         return true;
     }
 }
