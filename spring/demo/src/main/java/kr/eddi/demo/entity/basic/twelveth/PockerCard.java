@@ -39,8 +39,13 @@ public class PockerCard {
         List keys = new ArrayList(cards.keySet());
         Collections.shuffle(keys);
 
+        // ... 바보짓 했음 -> LinkedHashMap() 이것을 써야 순서가 보장됨
+        Map<Integer, Map<PockerCardShape, PockerCardCharacter>> cardsBackup = new LinkedHashMap<>();
+
         for (Object object: keys) {
-            System.out.println("After Shuffle Card: " + cards.get(object));
+            cardsBackup.put((Integer)object, cards.get(object));
         }
+
+        cards = cardsBackup;
     }
 }
