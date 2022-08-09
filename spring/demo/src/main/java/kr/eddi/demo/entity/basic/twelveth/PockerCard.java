@@ -60,9 +60,10 @@ public class PockerCard {
         Map.Entry<Integer, Map<PockerCardShape, PockerCardCharacter>> entry = cards.entrySet().iterator().next();
         dividedPlayerDeck = entry.getValue();
 
-        System.out.println("dividedPlayerDeck: " + dividedPlayerDeck);
+        //System.out.println("dividedPlayerDeck: " + dividedPlayerDeck);
 
         Integer key = entry.getKey();
+        System.out.println("key: " + key);
         cards.remove(key);
 
         return dividedPlayerDeck;

@@ -17,7 +17,7 @@ public class Player {
     }
 
     public void acquireNewCards(Map<PockerCardShape, PockerCardCharacter> newCardDeck) {
-        System.out.println("newCardDeck: " + newCardDeck);
+        //System.out.println("newCardDeck: " + newCardDeck);
 
         cardsDeck.add(newCardDeck);
     }
