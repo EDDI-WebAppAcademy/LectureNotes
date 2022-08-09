@@ -37,34 +37,14 @@ public class PlayerManager {
             // 4. 참여 순서대로 플레이어들에게 패를 돌린다. -> 카드 생성
             // 8. 추가패를 받는다.
             // 실제로 이 부분은 4번 8번이 함께 동작하므로 일관성을 유지하기 위해 별도의 함수를 배치하는 것이 좋아보임
+            // 실제로 추가패를 받는 작업과 공개할 패를 받는 작업의 연관성이 존재함
+            // 좋은 케이스: 여러 기능을 한 곳에서 처리하려고 하다보니 중복 코드가 발생하게 되었음
+            //           작은 기능을 개발할 때는 크게 문제가 되지 않지만
+            //           기능이 커질수록 분리를 안하는 경우 아래와 같이 중복 코드를 작성하게 됨.
             acquireNewCards(i, currentRound);
 
-            System.out.println(playerList.get(i));
-
-            // 현재 플레이어가 가지고 있는 손 패를 모두 보여주고 있음.
-            // 앞서 만들었던 유틸리티를 활용해 공개할 정보만 관리하도록 함.
-
-            //playerList.get(i).acquireNewCards(pockerCard.divideCard());
             // 5. 플레이어들은 공개할 패를 선택한다.
-            //List<Map<PockerCardShape, PockerCardCharacter>> newPlayerPublishingDeckList = new ArrayList<>();
-            //newPlayerPublishingDeckList.add(playerList.get(i).publishingPlayersCard());
-            // 기존 해쉬맵에서 밸류값인 리스트를 가져와서 해당 값에 내용을 추가하고 다시 put해서 넣어야함.
-            //List<Map<PockerCardShape, PockerCardCharacter>> existingPlayerPublishingDeckList;
-
-            /*
-            if (playerPubishingDeck.get(playerList.get(i)) == null) {
-                existingPlayerPublishingDeckList = newPlayerPublishingDeckList;
-            } else {
-                existingPlayerPublishingDeckList = playerPubishingDeck.get(playerList.get(i));
-                int existingDeckSize = existingPlayerPublishingDeckList.size();
-
-                existingPlayerPublishingDeckList.add(newPlayerPublishingDeckList.get(0));
-            }
-
-            playerPubishingDeck.put(playerList.get(i), existingPlayerPublishingDeckList);
-
-             */
-
+            publishingPlayerCard(i, currentRound);
 
             // 7. 가장 높은 패에게 턴 우선권을 제공한다.
             //    compareTo를 활용해서 비교를 하도록 구성해야함
@@ -83,7 +63,28 @@ public class PlayerManager {
             // 9. 베팅 머니 추가
         }
 
-        //System.out.println(playerPubishingDeck);
+        System.out.println(playerPubishingDeck);
+    }
+
+    public void publishingPlayerCard(int playerIdx, int currentRound) {
+        if (currentRound == 0) {
+            List<Map<PockerCardShape, PockerCardCharacter>> newPlayerPublishingDeckList = new ArrayList<>();
+            newPlayerPublishingDeckList.add(playerList.get(playerIdx).publishingPlayersCard());
+
+            // 기존 해쉬맵에서 밸류값인 리스트를 가져와서 해당 값에 내용을 추가하고 다시 put해서 넣어야함.
+            List<Map<PockerCardShape, PockerCardCharacter>> existingPlayerPublishingDeckList;
+
+            if (playerPubishingDeck.get(playerList.get(playerIdx)) == null) {
+                existingPlayerPublishingDeckList = newPlayerPublishingDeckList;
+            } else {
+                existingPlayerPublishingDeckList = playerPubishingDeck.get(playerList.get(playerIdx));
+                int existingDeckSize = existingPlayerPublishingDeckList.size();
+
+                existingPlayerPublishingDeckList.add(newPlayerPublishingDeckList.get(0));
+            }
+
+            playerPubishingDeck.put(playerList.get(playerIdx), existingPlayerPublishingDeckList);
+        }
     }
 
     public void acquireNewCards(int playerIdx, int currentRound) {
@@ -92,7 +93,22 @@ public class PlayerManager {
                 playerList.get(playerIdx).acquireNewCards(pockerCard.divideCard());
             }
         } else {
-            playerList.get(playerIdx).acquireNewCards(pockerCard.divideCard());
+            List<Map<PockerCardShape, PockerCardCharacter>> existingPlayerPublishingDeckList;
+            List<Map<PockerCardShape, PockerCardCharacter>> newPlayerPublishingDeckList = new ArrayList<>();
+            newPlayerPublishingDeckList.add(pockerCard.divideCard());
+
+            playerList.get(playerIdx).acquireNewCards(newPlayerPublishingDeckList.get(0));
+
+            if (playerPubishingDeck.get(playerList.get(playerIdx)) == null) {
+                existingPlayerPublishingDeckList = newPlayerPublishingDeckList;
+            } else {
+                existingPlayerPublishingDeckList = playerPubishingDeck.get(playerList.get(playerIdx));
+                int existingDeckSize = existingPlayerPublishingDeckList.size();
+
+                existingPlayerPublishingDeckList.add(newPlayerPublishingDeckList.get(0));
+            }
+
+            playerPubishingDeck.put(playerList.get(playerIdx), existingPlayerPublishingDeckList);
         }
     }
 }
