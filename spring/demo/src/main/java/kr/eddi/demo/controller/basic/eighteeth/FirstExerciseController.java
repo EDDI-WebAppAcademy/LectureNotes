@@ -2,12 +2,11 @@ package kr.eddi.demo.controller.basic.eighteeth;
 
 import kr.eddi.demo.entity.basic.eighteenth.Fruit;
 import kr.eddi.demo.entity.basic.eighteenth.PlayerCharacter;
+import kr.eddi.demo.entity.basic.eighteenth.SyllableNameManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 @Slf4j
 @RestController
@@ -40,5 +39,17 @@ public class FirstExerciseController {
         System.out.println("플레이어 정보: " + character);
 
         return "0";
+    }
+
+    /*
+    학교종이 땡땡땡의 음계표를 enum을 활용해서 구현해보자.
+    "솔솔라라 솔솔미" <<<--- 요기까지만
+     */
+    @GetMapping("/exercise2")
+    public int[] doExercise2() {
+        SyllableNameManager syllableNameManager = new SyllableNameManager("솔솔라라솔솔미");
+
+        syllableNameManager.analysisSyllables();
+        return syllableNameManager.getSyllablesNumber();
     }
 }
