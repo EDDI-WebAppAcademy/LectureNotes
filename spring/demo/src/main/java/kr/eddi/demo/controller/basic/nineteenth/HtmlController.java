@@ -65,4 +65,11 @@ public class HtmlController {
 
         return "/basic/nineteenth/table-test3";
     }
+
+    @GetMapping("table-test4")
+    public String tableTest4() {
+        log.info("table-test4");
+
+        return "/basic/nineteenth/table-test4";
+    }
 }
