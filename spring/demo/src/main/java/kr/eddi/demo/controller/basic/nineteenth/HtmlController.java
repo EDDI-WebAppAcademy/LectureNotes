@@ -37,4 +37,11 @@ public class HtmlController {
 
         return "/basic/nineteenth/color-style";
     }
+
+    @GetMapping("table-test1")
+    public String tableTest1() {
+        log.info("table-test1");
+
+        return "/basic/nineteenth/table-test1";
+    }
 }
