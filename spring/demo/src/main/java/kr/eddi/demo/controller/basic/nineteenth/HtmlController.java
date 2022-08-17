@@ -44,4 +44,25 @@ public class HtmlController {
 
         return "/basic/nineteenth/table-test1";
     }
+
+    @GetMapping("table-test2")
+    public String tableTest2() {
+        log.info("table-test2");
+
+        return "/basic/nineteenth/table-test2";
+    }
+
+    @GetMapping("table-quiz")
+    public String tableQuiz() {
+        log.info("table-quiz");
+
+        return "/basic/nineteenth/table-quiz";
+    }
+
+    @GetMapping("table-test3")
+    public String tableTest3() {
+        log.info("table-test3");
+
+        return "/basic/nineteenth/table-test3";
+    }
 }

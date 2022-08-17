@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        td {
+            padding: 15px;
+        }
+        tr > td:nth-child(odd) {
+            width: 120px; /* 홀수번째 열의 너비: 120px */
+        }
+        tr > td:nth-child(even) {
+            width: 300px; /* 짝수번째 열의 너비: 300px */
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Name</th>
+            <td></td>
+            <th>Contact</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <!-- colspan을 통해 3라인을 합침 -->
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <th>Self Introduction</th>
+            <td colspan="3"></td>
+        </tr>
+    </table>
+</body>
+</html>
