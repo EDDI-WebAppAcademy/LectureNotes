@@ -2,6 +2,8 @@ package kr.eddi.demo.controller.basic.nineteenth;
 
 import kr.eddi.demo.entity.basic.second.Member;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,5 +50,22 @@ public class EntityResponseController {
         memberMap.put("test", member2);
 
         return memberMap;
+    }
+
+    @GetMapping("no-response")
+    public void noResponse() {
+        log.info("no response");
+    }
+
+    @GetMapping("no-response2")
+    public ResponseEntity<Void> noResponse2() {
+        log.info("No Response2");
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("string-response")
+    public ResponseEntity<String> stringResponse() {
+        return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 }
