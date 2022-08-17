@@ -16,4 +16,11 @@ public class HtmlController {
 
         return "/basic/nineteenth/list-tag";
     }
+
+    @GetMapping("/img-tag")
+    public String imgTagTest() {
+        log.info("img-tag");
+
+        return "/basic/nineteenth/img-tag";
+    }
 }
