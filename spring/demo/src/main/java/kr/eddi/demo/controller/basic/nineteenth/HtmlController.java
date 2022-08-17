@@ -23,4 +23,11 @@ public class HtmlController {
 
         return "/basic/nineteenth/img-tag";
     }
+
+    @GetMapping("/font-test")
+    public String fontTest() {
+        log.info("font-test");
+
+        return "/basic/nineteenth/font";
+    }
 }
