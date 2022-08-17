@@ -30,4 +30,11 @@ public class HtmlController {
 
         return "/basic/nineteenth/font";
     }
+
+    @GetMapping("/color-test")
+    public String colorTest() {
+        log.info("color-test");
+
+        return "/basic/nineteenth/color-style";
+    }
 }
