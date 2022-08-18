@@ -1,0 +1,13 @@
+ul {
+    list-style: none;
+}
+li {
+    margin: 20px;
+}
+li label {
+    width: 80px;
+    float: left;
+}
+fieldset {
+    margin: 15px;
+}

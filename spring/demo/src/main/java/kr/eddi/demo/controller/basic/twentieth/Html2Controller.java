@@ -65,4 +65,11 @@ public class Html2Controller {
 
         return "basic/twentieth/radio-btn-test";
     }
+
+    @GetMapping("/login-form-test")
+    public String loginFormTest() {
+        log.info(("login-form-test"));
+
+        return "basic/twentieth/login-form-test";
+    }
 }
