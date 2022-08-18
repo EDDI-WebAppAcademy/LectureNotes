@@ -37,4 +37,11 @@ public class Html2Controller {
 
         return "basic/twentieth/display-method-with-css";
     }
+
+    @GetMapping("/hyperlink-test")
+    public String hyperlinkTest() {
+        log.info(("hyperlink-test"));
+
+        return "basic/twentieth/hyperlink-test";
+    }
 }
