@@ -58,4 +58,11 @@ public class Html2Controller {
 
         return "basic/twentieth/checkbox-test";
     }
+
+    @GetMapping("/radio-btn-test")
+    public String radioBtnTest() {
+        log.info(("radio-btn-test"));
+
+        return "basic/twentieth/radio-btn-test";
+    }
 }
