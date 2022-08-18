@@ -1,0 +1,11 @@
+form ul li {
+    list-style: none;
+    margin: 20px;
+}
+form label {
+    width: 150px;
+    float: left;
+}
+fieldset {
+    margin: 15px;
+}

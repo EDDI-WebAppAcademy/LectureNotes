@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/number-form-test.css">
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>숫자 Form 테스트</legend>
+            <ul>
+                <li>
+                    <label for="member">신청인원<small>(Max 10)</small></label>
+                    <input type="number" id="member" value="1" min="1" max="10" step="1">
+                </li>
+                <li>
+                    <label for="satisfy">만족도<small>(1, 2, 3, 4, 5)</small></label>
+                    <input type="range" id="satisfy" value="3" min="1" max="5">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+</body>
+</html>

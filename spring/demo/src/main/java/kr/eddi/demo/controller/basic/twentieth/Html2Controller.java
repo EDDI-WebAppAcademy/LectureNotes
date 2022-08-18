@@ -72,4 +72,18 @@ public class Html2Controller {
 
         return "basic/twentieth/login-form-test";
     }
+
+    @GetMapping("/login-form-test2")
+    public String loginFormTest2() {
+        log.info(("login-form-test2"));
+
+        return "basic/twentieth/login-form-test2";
+    }
+
+    @GetMapping("/number-form-test")
+    public String numberFormTest() {
+        log.info(("number-form-test"));
+
+        return "basic/twentieth/number-form-test";
+    }
 }
