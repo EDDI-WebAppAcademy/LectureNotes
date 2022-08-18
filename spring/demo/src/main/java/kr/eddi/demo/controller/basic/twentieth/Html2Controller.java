@@ -30,4 +30,11 @@ public class Html2Controller {
 
         return "basic/twentieth/display-method-test";
     }
+
+    @GetMapping("/display-method-with-css")
+    public String displayMethodWithCss() {
+        log.info(("display-method-with-css"));
+
+        return "basic/twentieth/display-method-with-css";
+    }
 }
