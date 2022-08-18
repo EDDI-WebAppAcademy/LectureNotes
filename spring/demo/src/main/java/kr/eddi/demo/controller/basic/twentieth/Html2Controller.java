@@ -44,4 +44,18 @@ public class Html2Controller {
 
         return "basic/twentieth/hyperlink-test";
     }
+
+    @GetMapping("/form-test")
+    public String formTest() {
+        log.info(("form-test"));
+
+        return "basic/twentieth/form-test";
+    }
+
+    @GetMapping("/checkbox-test")
+    public String checkboxTest() {
+        log.info(("checkbox-test"));
+
+        return "basic/twentieth/checkbox-test";
+    }
 }
