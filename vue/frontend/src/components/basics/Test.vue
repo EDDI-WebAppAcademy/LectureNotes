@@ -4,6 +4,12 @@
     <li v-for="(item, index) in lists" :key=index>
       {{ item }}
     </li>
+    <button v-on:click="clickHandler">클릭해봐!</button>
+    <input v-model="initMsg">
+    <p>{{ initMsg }}</p><br/>
+
+    <button v-on:click="show=!show">쇼타임!</button>
+    <p v-if="show">보였다 안보였다</p>
   </div>
 </template>
 
@@ -14,7 +20,14 @@ export default {
   data() {
     return {
       testMsg: "My Message",
-      lists: ['apple', 'banana', 'grape']
+      lists: ['apple', 'banana', 'grape'],
+      initMsg: "양방향으로 맵핑이 가능함",
+      show: true
+    }
+  },
+  methods: {
+    clickHandler: function (event) {
+      alert("이벤트 발생: " + event.target)
     }
   }
 }
