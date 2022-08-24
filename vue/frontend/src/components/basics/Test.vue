@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>{{ testMsg }}</h1>
+    <li v-for="(item, index) in lists" :key=index>
+      {{ item }}
+    </li>
   </div>
 </template>
 
@@ -11,6 +14,7 @@ export default {
   data() {
     return {
       testMsg: "My Message",
+      lists: ['apple', 'banana', 'grape']
     }
   }
 }
