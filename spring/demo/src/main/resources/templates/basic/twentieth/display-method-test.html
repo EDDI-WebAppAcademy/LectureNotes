@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span.intest {
+            display: inline;
+            width: 100px;
+            height: 100px;
+            padding: 5px;
+            border: 1px solid blue;
+            background-color: darkcyan;
+        }
+        span.inblock {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            padding: 5px;
+            border: 1px solid blue;
+            background-color: darkcyan;
+        }
+        span.b {
+            display: block;
+            width: 100px;
+            height: 100px;
+            padding: 5px;
+            border: 1px solid blue;
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <h2>디스플레이 방식 테스트(inline, inline-block, block)</h2>
+
+    <div>
+        Test <span class="intest">Test</span> <span class="intest">Test</span> Test
+    </div>
+    <div>
+        Test <span class="inblock">Test</span> <span class="inblock">Test</span> Test
+    </div>
+
+    <div>
+        Test <span class="b">Test</span> <span class="b">Test</span> Test
+    </div>
+</body>
+</html>
