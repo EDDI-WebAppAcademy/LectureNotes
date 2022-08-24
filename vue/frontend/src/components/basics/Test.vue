@@ -28,7 +28,7 @@ export default {
   methods: {
     clickHandler: function (event) {
       alert("이벤트 발생: " + event.target)
-    }
+    },
   }
 }
 </script>
