@@ -86,4 +86,11 @@ public class Html2Controller {
 
         return "basic/twentieth/number-form-test";
     }
+
+    @GetMapping("/drop-down-btn-test")
+    public String dropDownBtnTest() {
+        log.info(("drop-down-btn-test"));
+
+        return "basic/twentieth/drop-down-btn-test";
+    }
 }
