@@ -18,6 +18,33 @@
     <p>{{ count }} 번 클릭했습니다.</p>
     <button v-on:click="increment">카운트 버튼</button><br/>
 
+    <h3>상점</h3>
+    <label>
+      <input type="checkbox" v-model="shopView" v-on:click="shuffleShopList()">
+      판매 목록
+    </label>
+    <button v-on:click="calcBuyList()">구매 확정</button>
+    <table border="1" v-if="shopView">
+      <tr>
+        <th align="center" width="40">번호</th>
+        <th align="center" width="120">아이템명</th>
+        <th align="center" width="160">가격</th>
+        <th align="center" width="320">아이템 설명</th>
+        <th align="center" width="40">구매</th>
+      </tr>
+      <tr v-for="(item, index) in shopList" :key="index">
+        <th align="center" width="40">{{ index }}</th>
+        <th align="center" width="120">{{ item.name }}</th>
+        <th align="center" width="160">{{ item.price }}</th>
+        <th align="center" width="320">{{ item.effect.description }}</th>
+        <th align="center" width="40">
+          <label>
+            <input type="checkbox" v-model="shopListValue" :value="index">
+          </label>
+        </th>
+      </tr>
+    </table>
+
     <p>캐릭터 상태 창</p>
     <p>HP: {{ characterStatus.hp }} MP: {{ characterStatus.mp }} ATK: {{ characterStatus.atk }} Lv: {{ characterStatus.level }} 직업: {{ characterStatus.currentJob }}</p>
     <p>STR: {{ characterStatus.str }} INT: {{ characterStatus.intelligence }} DEX: {{ characterStatus.dex }} VIT: {{ characterStatus.vit }} DEF: {{ characterStatus.def }} MEN: {{ characterStatus.men }}</p>
@@ -53,6 +80,16 @@ export default {
   name: "Test",
   data() {
     return {
+      shopView: false,
+      shopList: [],
+      shopListValue: [],
+      itemBooks: [
+        { name: 'HP 포션 I', price: 50, effect: { description: 'hp 200 회복', amount: 200 }},
+        { name: 'HP 포션 II', price: 200, effect: { description: 'hp 600 회복', amount: 600 }},
+        { name: '낡은 검', price: 5000000, effect: { description: '무기 공격력 100', atk: 100 }},
+        { name: '검', price: 50000000, effect: { description: '무기 공격력 200', atk: 200 }},
+        { name: '강철 검', price: 150000000, effect: { description: '무기 공격력 300', atk: 300 }},
+      ],
       name: "키메라",
       testMsg: "My Message",
       lists: ['apple', 'banana', 'grape'],
@@ -109,6 +146,34 @@ export default {
     }
   },
   methods: {
+    shuffleShopList () {
+      if (!this.shopView) {
+        this.shopListValue = []
+      }
+
+      for (let i = 0; i < 10; i++) {
+        let randIdx = Math.floor(Math.random() * this.itemBooks.length)
+        this.shopList[i] = this.itemBooks[randIdx]
+      }
+    },
+    calcBuyList () {
+      let tmpSum = 0
+
+      for (let i = 0; i < this.shopListValue.length; i++) {
+        for (let j = 0; j < this.shopList.length; j++) {
+          if (this.shopListValue[i] === j) {
+            tmpSum += this.shopList[j].price
+            break
+          }
+        }
+      }
+
+      if (this.characterStatus.money - tmpSum >= 0) {
+        this.characterStatus.money -= tmpSum
+
+        alert("물품 구매 완료!")
+      } else { alert("돈읎다 - 돈벌어와!!!") }
+    },
     // clickHandler (event) {
     clickHandler: function (event) {
       alert("이벤트 발생: " + event.target)
@@ -211,7 +276,19 @@ export default {
       this.characterStatus.vit += 3
       this.characterStatus.men += 1
 
-      this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.1)
+      if (this.characterStatus.level < 10) {
+        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.1)
+      } else if (this.characterStatus.level < 30) {
+        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.3)
+      } else if (this.characterStatus.level < 50) {
+        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.5)
+      } else if (this.characterStatus.level < 70) {
+        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.6)
+      } else if (this.characterStatus.level < 80) {
+        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.7)
+      } else if (this.characterStatus.level < 100) {
+        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.8)
+      }
     }
   }
 }
