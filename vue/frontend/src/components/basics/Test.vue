@@ -35,6 +35,10 @@
     <ul>
       <li v-for="(monster, index) in monsterLists" :key="index">
         몬스터 이름: {{ monster.name }}, HP: {{ monster.hp }}
+        <!-- 병맛 감성 스킬명 -->
+        <button v-on:click="darknessDeathDestinyTypoonBlade(index)">
+          Darkness Death Destiny Typoon Blade
+        </button>
         <button v-on:click="removeMonster(index)">맵에 끼어 있는 몬스터 삭제하기</button>
       </li>
     </ul>
@@ -149,6 +153,19 @@ export default {
       for (let i = 0; i < 100; i++) {
         this.addRandomMonster()
       }
+    },
+    darknessDeathDestinyTypoonBlade (index) {
+      console.log("어둠의 다크에서 죽음의 데스를 느끼며 서쪽에서 불어오는 태풍을 맞으니 " +
+        "간닷! 다크니스 데스 데스티니 타이푼 블레이드!!!!!!!!!!!")
+
+      this.monsterLists[index].hp =
+          this.monsterLists[index].hp -
+          Math.floor(
+              this.characterStatus.atk * 70 +
+              this.characterStatus.str * 33 +
+              this.characterStatus.dex * 30 +
+              this.characterStatus.intelligence * 30
+          )
     }
   }
 }
