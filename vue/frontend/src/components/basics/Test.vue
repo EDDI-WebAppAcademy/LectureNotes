@@ -167,6 +167,23 @@ export default {
               this.characterStatus.intelligence * 30
           )
     }
+  },
+  beforeUpdate() {
+    console.log("나는 VDOM의 변화를 감지하면 무조건 동작해!")
+
+    let i
+
+    for (i = 0; i < this.monsterLists.length; i++) {
+      if (this.monsterLists[i].hp <= 0) {
+        for (let j = 0; j < this.monsterBooks.length; j++) {
+          if (this.monsterLists[i].name === this.monsterBooks[j].name) {
+            this.characterStatus.currentLevelBar += this.monsterBooks[j].exp
+            this.characterStatus.money += this.monsterBooks[j].dropMoney
+          }
+        }
+        this.monsterLists.splice(i, 1)
+      }
+    }
   }
 }
 </script>
