@@ -18,11 +18,19 @@
     <p>{{ count }} 번 클릭했습니다.</p>
     <button v-on:click="increment">카운트 버튼</button><br/>
 
+    <p>캐릭터 상태 창</p>
+    <p>HP: {{ characterStatus.hp }} MP: {{ characterStatus.mp }} ATK: {{ characterStatus.atk }} Lv: {{ characterStatus.level }} 직업: {{ characterStatus.currentJob }}</p>
+    <p>STR: {{ characterStatus.str }} INT: {{ characterStatus.intelligence }} DEX: {{ characterStatus.dex }} VIT: {{ characterStatus.vit }} DEF: {{ characterStatus.def }} MEN: {{ characterStatus.men }}</p>
+    <p>경험치: {{ characterStatus.currentLevelBar }} / {{ characterStatus.totalLevelBar }}</p>
+    <p>소지금: {{ characterStatus.money }}</p>
+
     <!-- 현재 컨텐츠 측면에서 몬스터가 매번 같은것이 추가되서 재미 요소가 반감됨(그러므로 랜덤 요소를 넣어야함) -->
     (고정)몬스터 이름: <input v-model="name">
     <button v-on:click="addFixedMonster">고정 몬스터 추가하기</button><br/>
 
     <button v-on:click="addRandomMonster">랜덤 몬스터 추가하기</button><br/>
+
+    <button v-on:click="addManyRandomMonster">랜덤 몬스터 100마리 추가하기</button><br/>
 
     <ul>
       <li v-for="(monster, index) in monsterLists" :key="index">
@@ -74,6 +82,24 @@ export default {
         { id: 2, name: '고블린', hp: 100 },
         { id: 3, name: '놀', hp: 200 },
       ],
+      characterStatus: {
+        level: 1,
+        hp: 50,
+        mp: 30,
+        itemAtk: 0,
+        defaultAtk: 10,
+        atk: 10,
+        str: 10,
+        intelligence: 10,
+        dex: 10,
+        vit: 10,
+        def: 10,
+        men: 0,
+        totalLevelBar: 10,
+        currentLevelBar: 0,
+        money: 0,
+        currentJob: '모험가'
+      },
     }
   },
   methods: {
@@ -118,6 +144,11 @@ export default {
         name: this.monsterBooks[randomMonsterBookIdx].name,
         hp: this.monsterBooks[randomMonsterBookIdx].hp
       })
+    },
+    addManyRandomMonster () {
+      for (let i = 0; i < 100; i++) {
+        this.addRandomMonster()
+      }
     }
   }
 }
