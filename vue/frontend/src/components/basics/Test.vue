@@ -32,6 +32,8 @@
 
     <button v-on:click="addManyRandomMonster">랜덤 몬스터 100마리 추가하기</button><br/>
 
+    <button v-on:click="darknessTwilightBrightnessDawnRagnaBlade">황혼보다 어두운, 새벽보다 찬란한 라그나 블레이드</button><br/>
+
     <ul>
       <li v-for="(monster, index) in monsterLists" :key="index">
         몬스터 이름: {{ monster.name }}, HP: {{ monster.hp }}
@@ -166,6 +168,14 @@ export default {
               this.characterStatus.dex * 30 +
               this.characterStatus.intelligence * 30
           )
+    },
+    darknessTwilightBrightnessDawnRagnaBlade () {
+      console.log("여명은 빛나고 구름은 흐른다. 나 여기 주문을 외우니 망자를 구원하라! " +
+        "황혼보다 어두운, 새벽보다 찬란한 라그나 블레이드!!!!!!!!!")
+
+      for (let i = 0; i < this.monsterLists.length; i++) {
+        this.monsterLists[i].hp -= 30 * this.characterStatus.atk
+      }
     }
   },
   beforeUpdate() {
@@ -183,6 +193,25 @@ export default {
         }
         this.monsterLists.splice(i, 1)
       }
+    }
+
+    while (this.characterStatus.currentLevelBar >= this.characterStatus.totalLevelBar) {
+      this.characterStatus.currentLevelBar =
+          parseInt(this.characterStatus.currentLevelBar - this.characterStatus.totalLevelBar)
+
+      this.characterStatus.level += 1
+      this.characterStatus.hp = parseInt(this.characterStatus.hp * 1.05)
+      this.characterStatus.mp = parseInt(this.characterStatus.mp * 1.05)
+      this.characterStatus.defaultAtk += 4
+      this.characterStatus.atk += 4
+      this.characterStatus.def += 1
+      this.characterStatus.str += 3
+      this.characterStatus.intelligence += 1
+      this.characterStatus.dex += 2
+      this.characterStatus.vit += 3
+      this.characterStatus.men += 1
+
+      this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.1)
     }
   }
 }
