@@ -70,6 +70,28 @@
       </tr>
     </table><br/><br/>
 
+    <!-- 경험치 교환 시스템
+         공격력을 증가시킬 수 있는 수단이 필요
+         대략 경험치 1000만당 공격력 5 증가 정도로 구현하면 적합하다 판단됨
+         그 외 스탯도 1000만당 스탯 5 증가, hp, mp는 1000만당 50 증가로 작성해보도록 한다. -->
+    <h3>경험치 교환 시스템</h3>
+    <p>경험치 1000만당 스탯치 교환이 가능합니다. (hp, mp는 50, 나머지는 5)</p>
+    <button v-on:click="doExpExchange()">교환</button>
+    <table border="1">
+      <tr>
+        <th align="center" width="120">교환 리스트</th>
+        <th align="center" width="40">교환</th>
+      </tr>
+      <tr v-for="(exchangeList, idx) in expExchangeLists" :key="idx">
+        <th align="center" width="120">{{ exchangeList }}</th>
+        <th align="center" width="40">
+          <label>
+            <input type="checkbox" v-model="exchangeListValue" :value="idx">
+          </label>
+        </th>
+      </tr>
+    </table><br/><br/>
+
     <p>캐릭터 상태 창</p>
     <p>HP: {{ characterStatus.hp }} MP: {{ characterStatus.mp }} ATK: {{ characterStatus.atk }} Lv: {{ characterStatus.level }} 직업: {{ characterStatus.currentJob }}</p>
     <p>STR: {{ characterStatus.str }} INT: {{ characterStatus.intelligence }} DEX: {{ characterStatus.dex }} VIT: {{ characterStatus.vit }} DEF: {{ characterStatus.def }} MEN: {{ characterStatus.men }}</p>
@@ -101,11 +123,24 @@
 
 <script>
 
+const HP = 0
+const MP = 1
+const ATK = 2
+const STR = 3
+const DEX = 4
+const INT = 5
+const DEF = 6
+
+const HP_MP_INCREMENT = 50
+const OTHER_STATS_INCREMENT = 5
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Test",
   data() {
     return {
+      expExchangeLists: ["hp", "mp", "atk", "str", "dex", "int", "def"],
+      exchangeListValue: [],
       inventoryView: false,
       myInventory: [],
       myInventoryValue: [],
@@ -118,6 +153,11 @@ export default {
         { name: '낡은 검', price: 5000000, effect: { description: '무기 공격력 100', atk: 100 }},
         { name: '검', price: 50000000, effect: { description: '무기 공격력 200', atk: 200 }},
         { name: '강철 검', price: 150000000, effect: { description: '무기 공격력 300', atk: 300 }},
+        { name: '화열검', price: 550000000, effect: { description: '무기 공격력 500', atk: 500 }},
+        { name: '군주의검', price: 1000000000, effect: { description: '무기 공격력 1000', atk: 1000 }},
+        { name: '아이스소드', price: 1500000000, effect: { description: '무기 공격력 2000', atk: 2000 }},
+        { name: '칠지도', price: 2000000000, effect: { description: '무기 공격력 2000', atk: 2000 }},
+        { name: '군주의휘장', price: 1000000000, effect: { description: '악세사리 공격력 1000', atk: 1000 }},
       ],
       name: "키메라",
       testMsg: "My Message",
@@ -155,6 +195,15 @@ export default {
         { id: 2, name: '고블린', hp: 100 },
         { id: 3, name: '놀', hp: 200 },
       ],
+      exchangeStatus: {
+        hp: 0,
+        mp: 0,
+        atk: 0,
+        str: 0,
+        dex: 0,
+        int: 0,
+        def: 0,
+      },
       characterStatus: {
         level: 1,
         hp: 50,
@@ -176,6 +225,31 @@ export default {
     }
   },
   methods: {
+
+    doExpExchange () {
+      if (this.characterStatus.currentLevelBar < 10000000) { return }
+
+      console.log("expValue[0]: " + this.exchangeListValue[0] + ", ATK = " + ATK)
+      if (this.exchangeListValue[0] === HP) {
+        this.exchangeStatus.hp += HP_MP_INCREMENT
+      } else if (this.exchangeListValue[0] === MP) {
+        this.exchangeStatus.mp += HP_MP_INCREMENT
+      } else if (this.exchangeListValue[0] === ATK) {
+        console.log("Select ATK")
+        this.exchangeStatus.atk += OTHER_STATS_INCREMENT
+        this.characterStatus.atk = this.characterStatus.defaultAtk + this.characterStatus.itemAtk + this.exchangeStatus.atk
+      } else if (this.exchangeListValue[0] === STR) {
+        this.exchangeStatus.str += OTHER_STATS_INCREMENT
+      } else if (this.exchangeListValue[0] === DEX) {
+        this.exchangeStatus.dex += OTHER_STATS_INCREMENT
+      } else if (this.exchangeListValue[0] === INT) {
+        this.exchangeStatus.int += OTHER_STATS_INCREMENT
+      } else if (this.exchangeListValue[0] === DEF) {
+        this.exchangeStatus.def += OTHER_STATS_INCREMENT
+      }
+
+      this.characterStatus.currentLevelBar -= 10000000
+    },
     equipItem () {
       let tmpSum = 0
 
@@ -189,7 +263,7 @@ export default {
       }
 
       this.characterStatus.itemAtk = tmpSum
-      this.characterStatus.atk = this.characterStatus.defaultAtk + tmpSum
+      this.characterStatus.atk = this.characterStatus.defaultAtk + tmpSum + this.exchangeStatus.atk
     },
     shuffleShopList () {
       if (!this.shopView) {
@@ -304,17 +378,19 @@ export default {
       if (this.monsterLists[i].hp <= 0) {
         for (let j = 0; j < this.monsterBooks.length; j++) {
           if (this.monsterLists[i].name === this.monsterBooks[j].name) {
-            this.characterStatus.currentLevelBar += this.monsterBooks[j].exp
-            this.characterStatus.money += this.monsterBooks[j].dropMoney
+            this.characterStatus.currentLevelBar += this.monsterBooks[j].exp * 20
+            this.characterStatus.money += this.monsterBooks[j].dropMoney * 5
           }
         }
         this.monsterLists.splice(i, 1)
       }
     }
 
-    if (this.characterStatus.level == 99) { return; }
+    if (this.characterStatus.level == 99) { return }
 
     while (this.characterStatus.currentLevelBar >= this.characterStatus.totalLevelBar) {
+      if (this.characterStatus.level == 99) { return }
+
       this.characterStatus.currentLevelBar =
           parseInt(this.characterStatus.currentLevelBar - this.characterStatus.totalLevelBar)
 
@@ -322,7 +398,7 @@ export default {
       this.characterStatus.hp = parseInt(this.characterStatus.hp * 1.05)
       this.characterStatus.mp = parseInt(this.characterStatus.mp * 1.05)
       this.characterStatus.defaultAtk += 4
-      this.characterStatus.atk += 4
+      this.characterStatus.atk = this.characterStatus.defaultAtk + this.exchangeStatus.atk
       this.characterStatus.def += 1
       this.characterStatus.str += 3
       this.characterStatus.intelligence += 1
