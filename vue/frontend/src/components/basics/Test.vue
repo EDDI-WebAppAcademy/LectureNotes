@@ -175,6 +175,21 @@ export default {
     }
   },
   methods: {
+    equipItem () {
+      let tmpSum = 0
+
+      for (let i = 0; i < this.myInventoryValue.length; i++) {
+        for (let j = 0; j < this.myInventory.length; j++) {
+          if (this.myInventoryValue[i] === j) {
+            tmpSum += this.myInventory[j].effect.atk
+            break
+          }
+        }
+      }
+
+      this.characterStatus.itemAtk = tmpSum
+      this.characterStatus.atk = this.characterStatus.defaultAtk + tmpSum
+    },
     shuffleShopList () {
       if (!this.shopView) {
         this.shopListValue = []
@@ -313,17 +328,13 @@ export default {
       this.characterStatus.men += 1
 
       if (this.characterStatus.level < 10) {
-        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.1)
+        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.2)
       } else if (this.characterStatus.level < 30) {
         this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.3)
       } else if (this.characterStatus.level < 50) {
-        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.5)
-      } else if (this.characterStatus.level < 70) {
-        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.6)
-      } else if (this.characterStatus.level < 80) {
-        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.7)
+        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.1)
       } else if (this.characterStatus.level < 100) {
-        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.8)
+        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.3)
       }
     }
   }
