@@ -43,7 +43,32 @@
           </label>
         </th>
       </tr>
-    </table>
+    </table><br/><br/>
+
+    <h3>인벤토리</h3>
+    <label>
+      <input type="checkbox" v-model="inventoryView">
+      소지품 보기
+    </label>
+    <button v-on:click="equipItem()">아이템 장착!</button>
+    <table border="1" v-if="inventoryView">
+      <tr>
+        <th align="center" width="40">번호</th>
+        <th align="center" width="120">아이템명</th>
+        <th align="center" width="320">아이템 설명</th>
+        <th align="center" width="40">장착</th>
+      </tr>
+      <tr v-for="(itemList, idx) in myInventory" :key="idx">
+        <th align="center" width="40">{{ idx + 1 }}</th>
+        <th align="center" width="120">{{ itemList.name }}</th>
+        <th align="center" width="320">{{ itemList.effect.description }}</th>
+        <th align="center" width="40">
+          <label>
+            <input type="checkbox" v-model="myInventoryValue" :value="idx">
+          </label>
+        </th>
+      </tr>
+    </table><br/><br/>
 
     <p>캐릭터 상태 창</p>
     <p>HP: {{ characterStatus.hp }} MP: {{ characterStatus.mp }} ATK: {{ characterStatus.atk }} Lv: {{ characterStatus.level }} 직업: {{ characterStatus.currentJob }}</p>
@@ -75,11 +100,15 @@
 </template>
 
 <script>
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Test",
   data() {
     return {
+      inventoryView: false,
+      myInventory: [],
+      myInventoryValue: [],
       shopView: false,
       shopList: [],
       shopListValue: [],
@@ -170,6 +199,13 @@ export default {
 
       if (this.characterStatus.money - tmpSum >= 0) {
         this.characterStatus.money -= tmpSum
+
+        for (let i = 0; i < this.shopListValue.length; i++) {
+          this.myInventory.push({
+            name: this.shopList[this.shopListValue[i]].name,
+            effect: this.shopList[this.shopListValue[i]].effect
+          })
+        }
 
         alert("물품 구매 완료!")
       } else { alert("돈읎다 - 돈벌어와!!!") }
