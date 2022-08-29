@@ -148,6 +148,7 @@ export default {
         { monsterId: 19, name: '미노타우루스', hp: 10000, exp: 1500, dropMoney: 1000 },
         { monsterId: 20, name: '드레이크', hp: 20000, exp: 5000, dropMoney: 50000 },
         { monsterId: 21, name: '죽음의 군주', hp: 1000000, exp: 200000, dropMoney: 1000000 },
+        { monsterId: 9999, name: '하이퍼 메탈 슬라임', hp: 1000, exp: 5000000, dropMoney: 10000000 }
       ],
       monsterLists: [
         { id: 1, name: '슬라임', hp: 50 },
@@ -311,6 +312,8 @@ export default {
       }
     }
 
+    if (this.characterStatus.level == 99) { return; }
+
     while (this.characterStatus.currentLevelBar >= this.characterStatus.totalLevelBar) {
       this.characterStatus.currentLevelBar =
           parseInt(this.characterStatus.currentLevelBar - this.characterStatus.totalLevelBar)
@@ -333,8 +336,10 @@ export default {
         this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.3)
       } else if (this.characterStatus.level < 50) {
         this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.1)
-      } else if (this.characterStatus.level < 100) {
+      } else if (this.characterStatus.level < 70) {
         this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.3)
+      } else if (this.characterStatus.level < 100) {
+        this.characterStatus.totalLevelBar = parseInt(this.characterStatus.totalLevelBar * 1.1)
       }
     }
   }
