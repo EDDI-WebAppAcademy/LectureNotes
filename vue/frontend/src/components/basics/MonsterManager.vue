@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "SkillManager",
+  name: "MonsterManager",
   data () {
     return {
       monsterBooks: [

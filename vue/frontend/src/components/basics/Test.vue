@@ -18,6 +18,8 @@
     <p>{{ count }} 번 클릭했습니다.</p>
     <button v-on:click="increment">카운트 버튼</button><br/>
 
+    <market-manager/>
+
     <h3>상점</h3>
     <label>
       <input type="checkbox" v-model="shopView" v-on:click="shuffleShopList()">
@@ -45,6 +47,7 @@
       </tr>
     </table><br/><br/>
 
+    <inventory-manager/>
     <h3>인벤토리</h3>
     <label>
       <input type="checkbox" v-model="inventoryView">
@@ -70,6 +73,7 @@
       </tr>
     </table><br/><br/>
 
+    <experience-manager/>
     <!-- 경험치 교환 시스템
          공격력을 증가시킬 수 있는 수단이 필요
          대략 경험치 1000만당 공격력 5 증가 정도로 구현하면 적합하다 판단됨
@@ -97,6 +101,8 @@
     <p>STR: {{ characterStatus.str }} INT: {{ characterStatus.intelligence }} DEX: {{ characterStatus.dex }} VIT: {{ characterStatus.vit }} DEF: {{ characterStatus.def }} MEN: {{ characterStatus.men }}</p>
     <p>경험치: {{ characterStatus.currentLevelBar }} / {{ characterStatus.totalLevelBar }}</p>
     <p>소지금: {{ characterStatus.money }}</p>
+
+    <character-manager/>
 
     <!-- 현재 컨텐츠 측면에서 몬스터가 매번 같은것이 추가되서 재미 요소가 반감됨(그러므로 랜덤 요소를 넣어야함) -->
     (고정)몬스터 이름: <input v-model="name">
@@ -137,12 +143,20 @@ const HP_MP_INCREMENT = 50
 const OTHER_STATS_INCREMENT = 5
 
 import MonsterManager from "@/components/basics/MonsterManager";
+import CharacterManager from "@/components/basics/CharacterManager";
+import MarketManager from "@/components/basics/MarketManager";
+import InventoryManager from "@/components/basics/InventoryManager";
+import ExperienceManager from "@/components/basics/ExperienceManager";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Test",
   components: {
-    'monster-manager': MonsterManager
+    'monster-manager': MonsterManager,
+    'character-manager': CharacterManager,
+    'market-manager': MarketManager,
+    'inventory-manager': InventoryManager,
+    'experience-manager': ExperienceManager,
   },
   data() {
     return {
