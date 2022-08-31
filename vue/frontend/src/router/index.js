@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Test from '@/components/basics/Test.vue'
+import ComponentTestView from "@/views/basics/ComponentTestView";
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/test',
     name: 'test',
     component: Test
+  },
+  {
+    path: '/components-test',
+    name: 'ComponentTestView',
+    component: ComponentTestView
   }
 ]
 
