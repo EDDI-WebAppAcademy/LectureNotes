@@ -108,6 +108,8 @@
 
     <button v-on:click="darknessTwilightBrightnessDawnRagnaBlade">황혼보다 어두운, 새벽보다 찬란한 라그나 블레이드</button><br/>
 
+    <monster-manager/>
+
     <ul>
       <li v-for="(monster, index) in monsterLists" :key="index">
         몬스터 이름: {{ monster.name }}, HP: {{ monster.hp }}
@@ -134,9 +136,14 @@ const DEF = 6
 const HP_MP_INCREMENT = 50
 const OTHER_STATS_INCREMENT = 5
 
+import MonsterManager from "@/components/basics/MonsterManager";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Test",
+  components: {
+    'monster-manager': MonsterManager
+  },
   data() {
     return {
       expExchangeLists: ["hp", "mp", "atk", "str", "dex", "int", "def"],
