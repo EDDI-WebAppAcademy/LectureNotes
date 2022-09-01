@@ -25,7 +25,9 @@ export default {
         return
       }
 
-      this.$set(this.tableData[this.rowIndex], this.cellIndex, this.game.propsTurnShape)
+      console.log('this.game.propsTurnShape: ' + this.game.propsTurnShape)
+
+      this.$set(this.tableData[this.rowIndex], this.cellIndex, this.turnShape)
       //this.$emit('updateGameBoard', '')
 
       this.game.propsTurnShape = this.turnShape === 'O' ? 'X' : 'O'
