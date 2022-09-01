@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Test from '@/components/basics/Test.vue'
+
 import ComponentTestView from "@/views/basics/ComponentTestView";
+import ConcaveBoardView from "@/views/game/ConcaveBoardView";
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,11 @@ const routes = [
     path: '/components-test',
     name: 'ComponentTestView',
     component: ComponentTestView
+  },
+  {
+    path: '/concave-board-game',
+    name: 'ConcaveBoardView',
+    component: ConcaveBoardView
   }
 ]
 
