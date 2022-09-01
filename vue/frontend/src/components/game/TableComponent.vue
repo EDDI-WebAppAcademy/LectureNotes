@@ -7,7 +7,9 @@
       :row-index="index"
       :table-data="tableData"
       :turn-shape="turnShape"
-      @updateTurnShape="updateTurnShape"/>
+      @updateTurnShape="updateTurnShape"
+      @updateWinner="updateWinner"
+      @updateTableData="updateTableData"/>
   </table>
 </template>
 
@@ -34,6 +36,14 @@ export default {
       console.log('TableComponent - turnShape: ' + passingValue)
       this.propsTurnShape = passingValue
       this.$emit('updateTurnShape', this.propsTurnShape)
+    },
+    updateWinner (passingValue) {
+      console.log('TableComponent - winner: ' + passingValue)
+      this.propsWinner = passingValue
+      this.$emit('updateWinner', this.propsWinner)
+    },
+    updateTableData () {
+      this.$emit('updateTableData')
     }
   }
 }

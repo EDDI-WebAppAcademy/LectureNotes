@@ -4,7 +4,9 @@
     <table-component
       :table-data="tableData"
       :turn-shape="turnShape"
-      @updateTurnShape="updateTurnShape"/>
+      @updateTurnShape="updateTurnShape"
+      @updateWinner="updateWinner"
+      @updateTableData="updateTableData"/>
     <div v-if="winner">{{ winner }} 님의 승리!</div>
   </div>
 </template>
@@ -35,6 +37,19 @@ export default {
     updateTurnShape (passingValue) {
       console.log('ConcaveBoardView - turnShape: ' + passingValue)
       this.turnShape = passingValue
+    },
+    updateWinner (passingValue) {
+      console.log('ConcaveBoardView - winner: ' + passingValue)
+      this.winner = passingValue
+    },
+    updateTableData () {
+      this.tableData = [
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+      ]
     }
   }
 }

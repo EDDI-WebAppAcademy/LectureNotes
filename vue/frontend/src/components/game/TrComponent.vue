@@ -8,7 +8,9 @@
       :row-index="rowIndex"
       :table-data="tableData"
       :turn-shape="turnShape"
-      @updateTurnShape="updateTurnShape"/>
+      @updateTurnShape="updateTurnShape"
+      @updateWinner="updateWinner"
+      @updateTableData="updateTableData"/>
   </tr>
 </template>
 
@@ -32,6 +34,13 @@ export default {
       console.log('TrComponent - turnShape: ' + passingValue)
       this.propsTurnShape = passingValue
       this.$emit('updateTurnShape', this.propsTurnShape)
+    },
+    updateWinner (passingValue) {
+      this.propsWinner = passingValue
+      this.$emit('updateWinner', this.propsWinner)
+    },
+    updateTableData () {
+      this.$emit('updateTableData')
     }
   }
 }
