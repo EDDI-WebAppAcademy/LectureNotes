@@ -1,13 +1,25 @@
 <template>
   <div>
     <h2>Vue 2 Spring Test</h2>
-    <button @click="requestDataFromSpring">눌러봐!</button>
+    <button @click="callRequestDataFromSpring">눌러봐!</button>
   </div>
 </template>
 
 <script>
+
+import { mapState, mapActions } from 'vuex'
+
 export default {
-  name: "VueToSpringView"
+  name: "VueToSpringView",
+  computed: {
+    ...mapState(['springFromVueTestValue'])
+  },
+  methods: {
+    ...mapActions(['requestDataFromSpring']),
+    callRequestDataFromSpring () {
+      this.requestDataFromSpring()
+    }
+  }
 }
 </script>
 
