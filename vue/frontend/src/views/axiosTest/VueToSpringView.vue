@@ -8,7 +8,7 @@
 
 <script>
 
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: "VueToSpringView",
@@ -17,13 +17,10 @@ export default {
       returnValue: 0,
     }
   },
-  computed: {
-    ...mapState(['springFromVueTestValue'])
-  },
   methods: {
     ...mapActions(['requestDataFromSpring']),
-    async callRequestDataFromSpring({commit}) {
-      await this.requestDataFromSpring({commit})
+    async callRequestDataFromSpring() {
+      await this.requestDataFromSpring()
       this.returnValue = this.$store.state.springFromVueTestValue
     }
   }
