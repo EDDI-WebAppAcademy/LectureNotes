@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Vue 2 Spring Test</h2>
-    <button @click="requestDataFromSpring" :value="눌러봐"/>
+    <button @click="requestDataFromSpring">눌러봐!</button>
   </div>
 </template>
 
