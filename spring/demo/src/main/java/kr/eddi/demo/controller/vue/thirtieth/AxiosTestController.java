@@ -1,10 +1,10 @@
 package kr.eddi.demo.controller.vue.thirtieth;
 
+import kr.eddi.demo.entity.vue.RandomNumber;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class AxiosTestController {
 
     @GetMapping("/test")
-    public void getVueDataTest () {
+    public RandomNumber getVueDataTest () {
         log.info("getVueDataTest()");
 
+        RandomNumber randomNumber = new RandomNumber();
 
+        log.info("randomNumber: " + randomNumber);
+        //return new ResponseEntity<>(randomNumber, HttpStatus.OK);
+        return randomNumber;
     }
 }

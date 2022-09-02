@@ -11,7 +11,7 @@ export default {
 
         return axios.get('http://localhost:7777/30th/vue2spring/test')
             .then((res) => {
-                commit(REQUEST_DATA_FROM_SPRING, res.data)
+                commit(REQUEST_DATA_FROM_SPRING, res.data.randomNumber)
             })
     }
 }
