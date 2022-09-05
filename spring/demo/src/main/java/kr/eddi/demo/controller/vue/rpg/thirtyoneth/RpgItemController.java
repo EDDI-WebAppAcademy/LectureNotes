@@ -1,10 +1,15 @@
 package kr.eddi.demo.controller.vue.rpg.thirtyoneth;
 
+import kr.eddi.demo.entity.vue.rpg.ShopItems;
+import kr.eddi.demo.utility.basic.third.CustomRandom;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -12,10 +17,35 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
 public class RpgItemController {
 
-    @GetMapping("/random-shop-item-lists")
-    public String test () {
-        log.info("test()");
+    private List<ShopItems> allShopLists = new ArrayList<>();
 
-        return "hi";
+    public void buildDefaultItemList () {
+        if (allShopLists.size() == 0) {
+            allShopLists.add(new ShopItems("낡은 검", 5000000, "무기 공격력 100", 100));
+            allShopLists.add(new ShopItems("검", 50000000, "무기 공격력 200", 200));
+            allShopLists.add(new ShopItems("강철 검", 150000000, "무기 공격력 300", 300));
+            allShopLists.add(new ShopItems("화열검", 550000000, "무기 공격력 500", 500));
+            allShopLists.add(new ShopItems("군주의검", 1000000000, "무기 공격력 1000", 1000));
+        }
+    }
+
+    public void buildRandomShopList (List<ShopItems> randomShopLists) {
+        int everyItemSize = allShopLists.size();
+
+        for (int i = 0; i < 10; i++) {
+            ShopItems oneThing = allShopLists.get(CustomRandom.makeIntCustomRandom(0, everyItemSize - 1));
+            randomShopLists.add(oneThing);
+        }
+    }
+
+    @GetMapping("/random-shop-item-lists")
+    public List<ShopItems> shuffleShopItems () {
+        log.info("shuffleShopItems()");
+
+        buildDefaultItemList();
+        List<ShopItems> randomShopLists = new ArrayList<>();
+        buildRandomShopList(randomShopLists);
+
+        return randomShopLists;
     }
 }
