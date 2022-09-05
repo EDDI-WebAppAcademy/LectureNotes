@@ -30,6 +30,9 @@
 </template>
 
 <script>
+
+import {mapActions} from "vuex";
+
 export default {
   name: "CharacterManager",
   data () {
@@ -52,6 +55,11 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['requestRandomGameItem']),
+    shuffleShopList() {
+      this.requestRandomGameItem()
+    },
+    /*
     shuffleShopList () {
       if (!this.shopView) {
         this.shopListValue = []
@@ -62,6 +70,7 @@ export default {
         this.shopList[i] = this.itemBooks[randIdx]
       }
     },
+     */
     calcBuyList () {
       let tmpSum = 0
 

@@ -1,5 +1,6 @@
 import {
     REQUEST_DATA_FROM_SPRING,
+    REQUEST_RANDOM_SHOP_ITEM,
 } from './mutation-types'
 
 // npm install axios --save-dev
@@ -13,6 +14,14 @@ export default {
         return axios.get('http://localhost:7777/30th/vue2spring/test')
             .then((res) => {
                 commit(REQUEST_DATA_FROM_SPRING, res.data.randomNumber)
+            })
+    },
+    requestRandomGameItem ({ commit }) {
+        console.log("requestGameItemData()")
+
+        return axios.get('http://localhost:7777/31th/rpg-game/random-shop-item-lists')
+            .then((res) => {
+                commit(REQUEST_RANDOM_SHOP_ITEM, res.data)
             })
     }
 }
