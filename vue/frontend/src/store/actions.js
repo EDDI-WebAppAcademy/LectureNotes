@@ -1,6 +1,7 @@
 import {
     REQUEST_DATA_FROM_SPRING,
     REQUEST_RANDOM_SHOP_ITEM,
+    REQUEST_MY_INVENTORY
 } from './mutation-types'
 
 // npm install axios --save-dev
@@ -32,6 +33,14 @@ export default {
             .then((res) => {
                 alert(res.data)
                 commit()
+            })
+    },
+    requestMyInventory ({ commit }) {
+        console.log("requestMyInventory()")
+
+        return axios.post('http://localhost:7777/31th/rpg-game/my-inventory')
+            .then((res) => {
+                commit(REQUEST_MY_INVENTORY, res.data)
             })
     }
 }

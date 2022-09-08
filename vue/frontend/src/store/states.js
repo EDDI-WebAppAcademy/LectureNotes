@@ -1,4 +1,5 @@
 export default {
     springFromVueTestValue: null,
-    randomShopItem: []
+    randomShopItem: [],
+    myInventory: []
 }

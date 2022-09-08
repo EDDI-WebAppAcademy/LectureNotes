@@ -1,5 +1,6 @@
 package kr.eddi.demo.controller.vue.rpg.thirtyoneth;
 
+import kr.eddi.demo.controller.vue.rpg.thirtyoneth.request.Items;
 import kr.eddi.demo.controller.vue.rpg.thirtyoneth.request.RequestBuyItem;
 import kr.eddi.demo.entity.vue.rpg.ShopItems;
 import kr.eddi.demo.utility.basic.third.CustomRandom;
@@ -16,6 +17,7 @@ import java.util.List;
 public class RpgItemController {
 
     private List<ShopItems> allShopLists = new ArrayList<>();
+    private List<ShopItems> userInventoryList = new ArrayList<>();
 
     public void buildDefaultItemList () {
         if (allShopLists.size() == 0) {
@@ -51,6 +53,21 @@ public class RpgItemController {
     public String buyItems (@RequestBody RequestBuyItem requestBuyItem) {
         log.info("buyItems() - requestBuyItem: " + requestBuyItem);
 
+        List<Items> tmp = requestBuyItem.getItemLists();
+
+        for (int i = 0; i < requestBuyItem.getItemLists().size(); i++) {
+            ShopItems tmpItem = new ShopItems(tmp.get(i).getName(), tmp.get(i).getPrice(),
+                    tmp.get(i).getDescription(), tmp.get(i).getAtk());
+            userInventoryList.add(tmpItem);
+        }
+
         return "아이템 구매 성공!";
+    }
+
+    @PostMapping("/my-inventory")
+    public List<ShopItems> viewInventory () {
+        log.info("shuffleShopItems()");
+
+        return userInventoryList;
     }
 }

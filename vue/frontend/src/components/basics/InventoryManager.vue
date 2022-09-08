@@ -2,7 +2,7 @@
   <div>
     <h3>인벤토리 (Local Component)</h3>
     <label>
-      <input type="checkbox" v-model="inventoryView">
+      <input type="checkbox" v-model="inventoryView" v-on:click="viewMyInventory()">
       소지품 보기
     </label>
     <button v-on:click="equipItem()">아이템 장착!</button>
@@ -16,7 +16,7 @@
       <tr v-for="(itemList, idx) in myInventory" :key="idx">
         <th align="center" width="40">{{ idx + 1 }}</th>
         <th align="center" width="120">{{ itemList.name }}</th>
-        <th align="center" width="320">{{ itemList.effect.description }}</th>
+        <th align="center" width="320">{{ itemList.description }}</th>
         <th align="center" width="40">
           <label>
             <input type="checkbox" v-model="myInventoryValue" :value="idx">
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
   name: "CharacterManager",
   data () {
@@ -38,6 +40,16 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'requestMyInventory',
+    ]),
+    async viewMyInventory () {
+      if (!this.inventoryView) {
+        this.myInventoryValue = []
+        await this.requestMyInventory()
+        this.myInventory = this.$store.state.myInventory
+      }
+    },
     equipItem () {
       let tmpSum = 0
 
