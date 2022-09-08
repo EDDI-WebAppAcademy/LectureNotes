@@ -23,5 +23,15 @@ export default {
             .then((res) => {
                 commit(REQUEST_RANDOM_SHOP_ITEM, res.data)
             })
+    },
+    requestBuyItem ({ commit }, payload) {
+        console.log("requestBuyItem()")
+
+        return axios.post('http://localhost:7777/31th/rpg-game/buy-item',
+            { totalPrice: payload.calculatedPrice, itemLists: payload.selectedItems })
+            .then((res) => {
+                alert(res.data)
+                commit()
+            })
     }
 }

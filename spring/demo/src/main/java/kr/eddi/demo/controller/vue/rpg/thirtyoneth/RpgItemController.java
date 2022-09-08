@@ -1,12 +1,10 @@
 package kr.eddi.demo.controller.vue.rpg.thirtyoneth;
 
+import kr.eddi.demo.controller.vue.rpg.thirtyoneth.request.RequestBuyItem;
 import kr.eddi.demo.entity.vue.rpg.ShopItems;
 import kr.eddi.demo.utility.basic.third.CustomRandom;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,5 +45,12 @@ public class RpgItemController {
         buildRandomShopList(randomShopLists);
 
         return randomShopLists;
+    }
+
+    @PostMapping("/buy-item")
+    public String buyItems (@RequestBody RequestBuyItem requestBuyItem) {
+        log.info("buyItems() - requestBuyItem: " + requestBuyItem);
+
+        return "아이템 구매 성공!";
     }
 }

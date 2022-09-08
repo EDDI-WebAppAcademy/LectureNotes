@@ -5,7 +5,7 @@
       <input type="checkbox" v-model="shopView" v-on:click="shuffleShopList()">
       판매 목록
     </label>
-    <button v-on:click="calcBuyList()">구매 확정</button>
+    <button v-on:click="buyItem()">구매 확정</button>
     <table border="1" v-if="shopView">
       <tr>
         <th align="center" width="40">번호</th>
@@ -43,36 +43,48 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['requestRandomGameItem']),
+    ...mapActions([
+        'requestRandomGameItem',
+        'requestBuyItem'
+    ]),
     async shuffleShopList() {
-      await this.requestRandomGameItem()
-      this.shopList = this.$store.state.randomShopItem
-    },
-    /*
-    shuffleShopList () {
       if (!this.shopView) {
         this.shopListValue = []
-      }
-
-      for (let i = 0; i < 10; i++) {
-        let randIdx = Math.floor(Math.random() * this.itemBooks.length)
-        this.shopList[i] = this.itemBooks[randIdx]
+        await this.requestRandomGameItem()
+        this.shopList = this.$store.state.randomShopItem
       }
     },
-     */
+    async buyItem () {
+      let calculatedPrice = this.calcBuyList()
+      let selectedItems = this.checkSelectedItemList()
+      let payload = { calculatedPrice, selectedItems }
+      await this.requestBuyItem(payload)
+    },
+    checkSelectedItemList () {
+      let tmpList = []
+
+      for (let i = 0; i < this.shopListValue.length; i++) {
+        tmpList.push(this.shopList[this.shopListValue[i]])
+      }
+
+      console.log(tmpList)
+      return tmpList
+    },
     calcBuyList () {
-      let tmpSum = 0
+      let calculatedPrice = 0
 
       for (let i = 0; i < this.shopListValue.length; i++) {
         for (let j = 0; j < this.shopList.length; j++) {
           if (this.shopListValue[i] === j) {
-            tmpSum += this.shopList[j].price
+            calculatedPrice += this.shopList[j].price
             break
           }
         }
       }
 
-      console.log(tmpSum)
+      console.log(calculatedPrice)
+
+      return calculatedPrice
 
       /*
       if (this.characterStatus.money - tmpSum >= 0) {
