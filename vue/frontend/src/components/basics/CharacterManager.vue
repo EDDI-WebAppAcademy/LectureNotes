@@ -18,6 +18,7 @@ export default {
   },
   computed: {
     ...mapState([
+        'characterStatusUpdateFlag',
         'characterStatus'
     ])
   },

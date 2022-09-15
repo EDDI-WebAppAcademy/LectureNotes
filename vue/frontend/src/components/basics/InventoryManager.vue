@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 요렇게 주석 -->
     <h3>인벤토리 (Local Component)</h3>
     <label>
       <input type="checkbox" v-model="inventoryView" v-on:click="viewMyInventory()">

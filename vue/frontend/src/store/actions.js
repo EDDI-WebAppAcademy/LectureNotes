@@ -52,4 +52,15 @@ export default {
                 commit(REQUEST_CHARACTER_STATUS_FROM_SPRING, res.data)
             })
     },
+    requestExperienceExchangeFromSpring ({ commit }, payload) {
+        console.log("requestExperienceExchangeFromSpring()")
+
+        return axios.post('http://localhost:7777/37th/rpg-game/experience/exchange', payload)
+            .then(() => {
+                axios.post('http://localhost:7777/37th/rpg-game/get-character-status')
+                    .then((res) => {
+                        commit(REQUEST_CHARACTER_STATUS_FROM_SPRING, res.data)
+                    })
+            })
+    }
 }

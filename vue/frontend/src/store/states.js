@@ -3,4 +3,5 @@ export default {
     randomShopItem: [],
     myInventory: [],
     characterStatus: {},
+    characterStatusUpdateFlag: false
 }
