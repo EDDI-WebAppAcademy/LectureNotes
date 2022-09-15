@@ -1,7 +1,8 @@
 import {
     REQUEST_DATA_FROM_SPRING,
     REQUEST_RANDOM_SHOP_ITEM,
-    REQUEST_MY_INVENTORY
+    REQUEST_MY_INVENTORY,
+    REQUEST_CHARACTER_STATUS_FROM_SPRING,
 } from './mutation-types'
 
 // npm install axios --save-dev
@@ -42,5 +43,13 @@ export default {
             .then((res) => {
                 commit(REQUEST_MY_INVENTORY, res.data)
             })
-    }
+    },
+    requestCharacterStatusFromSpring ({ commit }) {
+        console.log("requestCharacterStatusFromSpring()")
+
+        return axios.post('http://localhost:7777/37th/rpg-game/get-character-status')
+            .then((res) => {
+                commit(REQUEST_CHARACTER_STATUS_FROM_SPRING, res.data)
+            })
+    },
 }

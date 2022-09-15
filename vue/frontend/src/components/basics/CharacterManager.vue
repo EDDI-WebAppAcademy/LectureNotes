@@ -9,33 +9,26 @@
 </template>
 
 <script>
+import {mapActions, mapState} from "vuex";
+
 export default {
   name: "CharacterManager",
   data () {
-    return {
-      characterStatus: {
-        level: 1,
-        hp: 50,
-        mp: 30,
-        itemAtk: 0,
-        defaultAtk: 10,
-        atk: 10,
-        str: 10,
-        intelligence: 10,
-        dex: 10,
-        vit: 10,
-        def: 10,
-        men: 0,
-        totalLevelBar: 10,
-        currentLevelBar: 0,
-        money: 0,
-        currentJob: '모험가'
-      },
-    }
+    return { }
+  },
+  computed: {
+    ...mapState([
+        'characterStatus'
+    ])
   },
   methods: {
-
-  }
+    ...mapActions([
+      'requestCharacterStatusFromSpring',
+    ]),
+  },
+  async mounted () {
+    await this.requestCharacterStatusFromSpring()
+  },
 }
 </script>
 
