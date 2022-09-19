@@ -4,6 +4,7 @@ import {
     REQUEST_MY_INVENTORY,
     REQUEST_CHARACTER_STATUS_FROM_SPRING,
     REQUEST_CHARACTER_STATUS_UPDATE_FROM_SPRING,
+    REQUEST_BOARD_LIST_FROM_SPRING,
 } from './mutation-types'
 
 export default {
@@ -21,5 +22,8 @@ export default {
     },
     [REQUEST_CHARACTER_STATUS_UPDATE_FROM_SPRING] (state, passingData) {
         state.characterStatusUpdateFlag = passingData
+    },
+    [REQUEST_BOARD_LIST_FROM_SPRING] (state, passingData) {
+        state.boards = passingData
     }
 }

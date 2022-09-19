@@ -3,6 +3,7 @@ import {
     REQUEST_RANDOM_SHOP_ITEM,
     REQUEST_MY_INVENTORY,
     REQUEST_CHARACTER_STATUS_FROM_SPRING,
+    REQUEST_BOARD_LIST_FROM_SPRING,
 } from './mutation-types'
 
 // npm install axios --save-dev
@@ -60,6 +61,14 @@ export default {
                 if (res.data == true) {
                     dispatch('requestCharacterStatusFromSpring')
                 }
+            })
+    },
+    requestBoardListFromSpring ({ commit }) {
+        console.log('requestBoardListFromSpring()')
+
+        return axios.get('http://localhost:7777/39th/jpa/board/list')
+            .then((res) => {
+                commit(REQUEST_BOARD_LIST_FROM_SPRING, res.data)
             })
     }
 }
