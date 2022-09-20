@@ -1,5 +1,6 @@
 package kr.eddi.demo.service.jpa.board;
 
+import kr.eddi.demo.controller.jpa.board.request.BoardRequest;
 import kr.eddi.demo.entity.jpa.boards.Board;
 import kr.eddi.demo.repository.board.BoardRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,12 @@ public class BoardServiceImpl implements BoardService {
     BoardRepository repository;
 
     @Override
-    public void register(Board board) {
+    public void register(BoardRequest boardRequest) {
+        Board board = new Board();
+        board.setTitle(boardRequest.getTitle());
+        board.setContent(boardRequest.getContent());
+        board.setWriter(boardRequest.getWriter());
+
         repository.save(board);
     }
 

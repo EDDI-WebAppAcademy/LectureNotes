@@ -10,6 +10,7 @@ import RpgGameView from "@/views/rpg/RpgGameView";
 import DataSendTestView from "@/views/basics/DataSendTestView";
 
 import JpaBoardListView from "@/views/boards/JpaBoardListView";
+import JpaBoardRegisterView from "@/views/boards/JpaBoardRegisterView";
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,11 @@ const routes = [
     path: '/board-list',
     name: 'JpaBoardListView',
     component: JpaBoardListView
+  },
+  {
+    path: '/board-register',
+    name: 'JpaBoardRegisterView',
+    component: JpaBoardRegisterView
   }
 
 ]

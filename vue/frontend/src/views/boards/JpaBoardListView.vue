@@ -1,7 +1,7 @@
 <template>
   <div id="board">
     <h2>Vue + Spring + JPA Boards</h2>
-    <router-link to="{ name: 'JpaBoardRegisterView' }">
+    <router-link :to="{ name: 'JpaBoardRegisterView' }">
       게시물 작성
     </router-link>
     <jpa-board-list :boards="boards"/>

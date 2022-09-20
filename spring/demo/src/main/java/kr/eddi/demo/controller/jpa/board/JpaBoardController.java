@@ -1,13 +1,12 @@
 package kr.eddi.demo.controller.jpa.board;
 
+import kr.eddi.demo.controller.jpa.board.request.BoardRequest;
 import kr.eddi.demo.entity.jpa.boards.Board;
 import kr.eddi.demo.service.jpa.board.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +24,12 @@ public class JpaBoardController {
         log.info("boardList()");
 
         return service.list();
+    }
+
+    @PostMapping("/register")
+    public void boardRegister (@RequestBody BoardRequest boardRequest) {
+        log.info("boardRegister()");
+
+        service.register(boardRequest);
     }
 }

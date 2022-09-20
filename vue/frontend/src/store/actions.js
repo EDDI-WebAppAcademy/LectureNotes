@@ -70,5 +70,16 @@ export default {
             .then((res) => {
                 commit(REQUEST_BOARD_LIST_FROM_SPRING, res.data)
             })
+    },
+    // eslint-disable-next-line no-empty-pattern
+    requestCreateBoardContentsToSpring ({ }, payload) {
+        console.log('requestCreateBoardContentsToSpring()')
+
+        const { title, content, writer } = payload
+        return axios.post('http://localhost:7777/39th/jpa/board/register',
+            { title, content, writer })
+            .then(() => {
+                alert('게시물 등록 성공')
+            })
     }
 }
