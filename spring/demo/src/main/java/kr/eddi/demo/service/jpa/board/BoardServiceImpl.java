@@ -34,8 +34,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Board read(Integer boardNo) {
-        Optional<Board> maybeBoard = repository.findById(Long.valueOf(boardNo));
+    public Board read(Long boardNo) {
+        Optional<Board> maybeBoard = repository.findById(boardNo);
 
         if (maybeBoard.equals(Optional.empty())) {
             log.info("Can't read board!!!");
@@ -51,7 +51,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void remove(Integer boardNo) {
-        repository.deleteById(Long.valueOf(boardNo));
+    public void remove(Long boardNo) {
+        repository.deleteById(boardNo);
     }
 }

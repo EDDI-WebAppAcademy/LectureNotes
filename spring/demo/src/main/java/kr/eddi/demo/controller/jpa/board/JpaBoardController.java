@@ -32,4 +32,28 @@ public class JpaBoardController {
 
         service.register(boardRequest);
     }
+
+    @GetMapping("/{boardNo}")
+    public Board boardRead (@PathVariable("boardNo") Long boardNo) {
+        log.info("boardRead()");
+
+        return service.read(boardNo);
+    }
+
+    @DeleteMapping("/{boardNo}")
+    public void boardRemove (@PathVariable("boardNo") Long boardNo) {
+        log.info("boardRemove()");
+
+        service.remove(boardNo);
+    }
+
+    @PutMapping("/{boardNo}")
+    public Board boardModify (@PathVariable("boardNo") Long boardNo, @RequestBody Board board) {
+        log.info("boardModify()");
+
+        board.setBoardNo(boardNo);
+        service.modify(board);
+
+        return board;
+    }
 }

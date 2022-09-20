@@ -8,7 +8,7 @@ import java.util.List;
 public interface BoardService {
     public void register(BoardRequest boardRequest);
     public List<Board> list();
-    public Board read(Integer boardNo);
+    public Board read(Long boardNo);
     public void modify(Board board);
-    public void remove(Integer boardNo);
+    public void remove(Long boardNo);
 }

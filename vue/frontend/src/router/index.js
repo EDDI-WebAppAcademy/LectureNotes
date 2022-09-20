@@ -11,6 +11,8 @@ import DataSendTestView from "@/views/basics/DataSendTestView";
 
 import JpaBoardListView from "@/views/boards/JpaBoardListView";
 import JpaBoardRegisterView from "@/views/boards/JpaBoardRegisterView";
+import JpaBoardReadView from "@/views/boards/JpaBoardReadView";
+import JpaBoardModifyView from "@/views/boards/JpaBoardModifyView";
 
 Vue.use(VueRouter)
 
@@ -59,6 +61,26 @@ const routes = [
     path: '/board-register',
     name: 'JpaBoardRegisterView',
     component: JpaBoardRegisterView
+  },
+  {
+    path: '/board-read/:boardNo',
+    name: 'JpaBoardReadView',
+    components: {
+      default: JpaBoardReadView
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/board-modify/:boardNo',
+    name: 'JpaBoardModifyView',
+    components: {
+      default: JpaBoardModifyView
+    },
+    props: {
+      default: true
+    }
   }
 
 ]
