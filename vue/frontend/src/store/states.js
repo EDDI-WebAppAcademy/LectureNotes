@@ -6,5 +6,8 @@ export default {
     characterStatusUpdateFlag: false,
 
     boards: [],
-    board: {}
+    board: {},
+
+    products: [],
+    product: {},
 }
