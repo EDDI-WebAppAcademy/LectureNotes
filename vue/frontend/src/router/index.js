@@ -19,6 +19,8 @@ import JpaProductRegisterView from "@/views/products/JpaProductRegisterView";
 import JpaProductReadView from "@/views/products/JpaProductReadView";
 import JpaProductModifyView from "@/views/products/JpaProductModifyView";
 
+import VuetifyTasteView from "@/views/vuetify/VuetifyTasteView";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -116,7 +118,13 @@ const routes = [
     props: {
       default: true
     }
+  },
+  {
+    path: '/vuetify-taste',
+    name: 'VuetifyTasteView',
+    component: VuetifyTasteView
   }
+
 
 ]
 
