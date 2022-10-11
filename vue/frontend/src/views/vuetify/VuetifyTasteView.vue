@@ -73,6 +73,9 @@
       </v-dialog><br/>
     </v-layout>
 
+    <!-- transition animation은 아래 참조
+         https://vuejs.org/guide/built-ins/transition.html
+         https://vuejs.org/guide/extras/animation.html -->
     <v-layout justify-center>
       <v-dialog v-model="loginDialog" persistent max-width="500px">
         <template v-slot:activator="{ on }">
