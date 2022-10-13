@@ -159,14 +159,123 @@
                   :items-per-page="10"
                   class="elevation-1">
     </v-data-table>
+
+    <div>
+      <v-img class="responsive-img" src="@/assets/img/mario.png"/>
+    </div>
+    <div class="video-container">
+      <iframe width="1200" height="720" src="https://www.youtube.com/embed/3AyCy1UUlpU"
+              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+      </iframe>
+    </div><br/>
+
+    <div class="row">
+      <div class="col-sm-2 green text-center">2</div>
+      <div class="col-sm-2 blue text-center">2</div>
+      <div class="col-sm-1 red text-center">1</div>
+      <div class="col-sm-3 purple text-center">3</div>
+      <div class="col-sm-4 yellow text-center">4</div>
+
+      <div class="col-sm-1 green text-center">1</div>
+      <div class="col-sm-2 blue text-center">2</div>
+      <div class="col-sm-6 red text-center">6</div>
+      <div class="col-sm-2 purple text-center">2</div>
+      <div class="col-sm-1 yellow text-center">1</div>
+    </div>
+
+    <!-- npm add vue-coverflow -->
+    <div>
+      <coverflow :coverList="coverList" :coverWidth="260" :index="2"/>
+    </div>
   </v-container>
 </template>
 
 <script>
+
+import coverflow from 'vue-coverflow'
+
 export default {
   name: "VuetifyTasteView",
+  components: {
+    coverflow
+  },
   data () {
     return {
+      coverList: [
+        {
+          cover: require('@/assets/img/mario.png'),
+          title: 'mario'
+        },
+        {
+          cover: require('@/assets/logo.png'),
+          title: 'logo'
+        },
+        {
+          cover: require('@/assets/img/mario.png'),
+          title: 'mario'
+        },
+        {
+          cover: require('@/assets/logo.png'),
+          title: 'logo'
+        },
+        {
+          cover: require('@/assets/img/mario.png'),
+          title: 'mario'
+        },
+        {
+          cover: require('@/assets/logo.png'),
+          title: 'logo'
+        },
+        {
+          cover: require('@/assets/img/mario.png'),
+          title: 'mario'
+        },
+        {
+          cover: require('@/assets/logo.png'),
+          title: 'logo'
+        },
+        {
+          cover: require('@/assets/img/mario.png'),
+          title: 'mario'
+        },
+        {
+          cover: require('@/assets/logo.png'),
+          title: 'logo'
+        },
+        {
+          cover: require('@/assets/img/mario.png'),
+          title: 'mario'
+        },
+        {
+          cover: require('@/assets/logo.png'),
+          title: 'logo'
+        },
+        {
+          cover: require('@/assets/img/mario.png'),
+          title: 'mario'
+        },
+        {
+          cover: require('@/assets/logo.png'),
+          title: 'logo'
+        },
+        {
+          cover: require('@/assets/img/mario.png'),
+          title: 'mario'
+        },
+        {
+          cover: require('@/assets/logo.png'),
+          title: 'logo'
+        },
+        {
+          cover: require('@/assets/img/mario.png'),
+          title: 'mario'
+        },
+        {
+          cover: require('@/assets/logo.png'),
+          title: 'logo'
+        },
+      ],
       headerTitle: [
         { text: '번호', value: 'boardNo', width: "70px" },
         { text: '제목', value: 'title', width: "200px" },
