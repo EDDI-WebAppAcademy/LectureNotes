@@ -12,6 +12,7 @@
         <router-link to="/board-list">게시판</router-link> |
         <router-link to="/product-list">상품 게시판</router-link> |
         <router-link to="/vuetify-taste">Vuetify 맛보기</router-link> |
+        <router-link to="/swiper-test">Swiper 테스트</router-link> |
       </nav>
       <router-view/>
     </div>
