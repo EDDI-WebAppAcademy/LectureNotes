@@ -21,6 +21,7 @@ import JpaProductModifyView from "@/views/products/JpaProductModifyView";
 
 import VuetifyTasteView from "@/views/vuetify/VuetifyTasteView";
 import SwiperTestView from "@/views/vuetify/SwiperTestView";
+import CalendarTestView from "@/views/vuetify/CalendarTestView";
 
 Vue.use(VueRouter)
 
@@ -129,6 +130,11 @@ const routes = [
     path: '/swiper-test',
     name: 'SwiperTestView',
     component: SwiperTestView
+  },
+  {
+    path: '/calendar-test',
+    name: 'CalendarTestView',
+    component: CalendarTestView
   }
 
 
