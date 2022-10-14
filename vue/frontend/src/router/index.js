@@ -24,6 +24,8 @@ import SwiperTestView from "@/views/vuetify/SwiperTestView";
 import CalendarTestView from "@/views/vuetify/CalendarTestView";
 import ImageGalleryTestView from "@/views/vuetify/ImageGalleryTestView";
 
+import FileUploadView from "@/views/file/FileUploadView";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -141,6 +143,11 @@ const routes = [
     path: '/image-gallery-test',
     name: 'ImageGalleryTestView',
     component: ImageGalleryTestView
+  },
+  {
+    path: '/file-upload-test',
+    name: 'FileUploadView',
+    component: FileUploadView
   },
 
 

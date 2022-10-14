@@ -15,6 +15,7 @@
         <router-link to="/swiper-test">Swiper 테스트</router-link> |
         <router-link to="/calendar-test">달력 테스트</router-link> |
         <router-link to="/image-gallery-test">이미지 갤러리 테스트</router-link> |
+        <router-link to="/file-upload-test">파일 업로드 테스트</router-link> |
       </nav>
       <router-view/>
     </div>
