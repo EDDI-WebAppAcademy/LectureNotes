@@ -14,6 +14,7 @@
         <router-link to="/vuetify-taste">Vuetify 맛보기</router-link> |
         <router-link to="/swiper-test">Swiper 테스트</router-link> |
         <router-link to="/calendar-test">달력 테스트</router-link> |
+        <router-link to="/image-gallery-test">이미지 갤러리 테스트</router-link> |
       </nav>
       <router-view/>
     </div>
