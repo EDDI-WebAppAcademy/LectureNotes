@@ -12,6 +12,9 @@
         <router-link to="/board-list">게시판</router-link> |
         <router-link to="/product-list">상품 게시판</router-link> |
         <router-link to="/vuetify-taste">Vuetify 맛보기</router-link> |
+        <router-link to="/common-component-test">mixins 공통 컴포넌트 맛보기</router-link> |
+        <router-link to="/d3-test">d3 test</router-link> |
+
       </nav>
       <router-view/>
     </div>

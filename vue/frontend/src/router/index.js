@@ -21,6 +21,10 @@ import JpaProductModifyView from "@/views/products/JpaProductModifyView";
 
 import VuetifyTasteView from "@/views/vuetify/VuetifyTasteView";
 
+import CommonTest from "@/views/common/CommonTest";
+
+import D3TestView from "@/views/d3test/D3TestView";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -123,6 +127,16 @@ const routes = [
     path: '/vuetify-taste',
     name: 'VuetifyTasteView',
     component: VuetifyTasteView
+  },
+  {
+    path: '/common-component-test',
+    name: 'CommonTest',
+    component: CommonTest
+  },
+  {
+    path: '/d3-test',
+    name: 'D3TestView',
+    component: D3TestView
   }
 
 
