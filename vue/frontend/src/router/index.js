@@ -20,6 +20,11 @@ import JpaProductReadView from "@/views/products/JpaProductReadView";
 import JpaProductModifyView from "@/views/products/JpaProductModifyView";
 
 import VuetifyTasteView from "@/views/vuetify/VuetifyTasteView";
+import SwiperTestView from "@/views/vuetify/SwiperTestView";
+import CalendarTestView from "@/views/vuetify/CalendarTestView";
+import ImageGalleryTestView from "@/views/vuetify/ImageGalleryTestView";
+
+import FileUploadView from "@/views/file/FileUploadView";
 
 import CommonTest from "@/views/common/CommonTest";
 
@@ -127,6 +132,26 @@ const routes = [
     path: '/vuetify-taste',
     name: 'VuetifyTasteView',
     component: VuetifyTasteView
+  },
+  {
+    path: '/swiper-test',
+    name: 'SwiperTestView',
+    component: SwiperTestView
+  },
+  {
+    path: '/calendar-test',
+    name: 'CalendarTestView',
+    component: CalendarTestView
+  },
+  {
+    path: '/image-gallery-test',
+    name: 'ImageGalleryTestView',
+    component: ImageGalleryTestView
+  },
+  {
+    path: '/file-upload-test',
+    name: 'FileUploadView',
+    component: FileUploadView
   },
   {
     path: '/common-component-test',

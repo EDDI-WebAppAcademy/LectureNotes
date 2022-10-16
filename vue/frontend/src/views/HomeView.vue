@@ -12,6 +12,10 @@
         <router-link to="/board-list">게시판</router-link> |
         <router-link to="/product-list">상품 게시판</router-link> |
         <router-link to="/vuetify-taste">Vuetify 맛보기</router-link> |
+        <router-link to="/swiper-test">Swiper 테스트</router-link> |
+        <router-link to="/calendar-test">달력 테스트</router-link> |
+        <router-link to="/image-gallery-test">이미지 갤러리 테스트</router-link> |
+        <router-link to="/file-upload-test">파일 업로드 테스트</router-link> |
         <router-link to="/common-component-test">mixins 공통 컴포넌트 맛보기</router-link> |
         <router-link to="/d3-test">d3 test</router-link> |
 
