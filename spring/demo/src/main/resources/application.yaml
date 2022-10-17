@@ -10,6 +10,13 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     dialect: org.hibernate.dialect.MySQL8Dialect
 
+  cache:
+    type: redis
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
   jpa:
     open-in-view: false
     database: mysql
@@ -17,3 +24,8 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
+
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 10MB
