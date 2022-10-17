@@ -10,4 +10,7 @@ export default {
 
     products: [],
     product: {},
+
+    sensors: [],
+    sensor: {},
 }

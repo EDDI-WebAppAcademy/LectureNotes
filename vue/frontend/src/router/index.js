@@ -26,6 +26,12 @@ import ImageGalleryTestView from "@/views/vuetify/ImageGalleryTestView";
 
 import FileUploadView from "@/views/file/FileUploadView";
 
+import CommonTest from "@/views/common/CommonTest";
+
+import D3TestView from "@/views/d3test/D3TestView";
+import D3PercentTestView from "@/views/d3test/D3PercentTestView";
+import D3SensorTestView from "@/views/d3test/D3SensorTestView";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -149,6 +155,31 @@ const routes = [
     name: 'FileUploadView',
     component: FileUploadView
   },
+  {
+    path: '/common-component-test',
+    name: 'CommonTest',
+    component: CommonTest
+  },
+  {
+    path: '/d3-test',
+    name: 'D3TestView',
+    component: D3TestView
+  },
+  {
+    path: '/d3-percent-test',
+    name: 'D3PercentTestView',
+    component: D3PercentTestView
+  },
+  {
+    path: '/d3-sensor-test',
+    name: 'D3SensorTestView',
+    components: {
+      default: D3SensorTestView
+    },
+    props: {
+      default: true
+    }
+  }
 
 
 ]

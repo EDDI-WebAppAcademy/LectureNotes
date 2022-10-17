@@ -8,6 +8,10 @@
     <input v-model="initMsg">
     <p>{{ initMsg }}</p><br/>
 
+    <button style="background-color: red">
+      Do it
+    </button>
+
     <button v-on:click="show=!show">쇼타임!</button>
     <p v-if="show">보였다 안보였다</p><br/>
     <p>{{ lists[1] }}</p><br/>
@@ -160,6 +164,7 @@ export default {
   },
   data() {
     return {
+      test: 'blue',
       expExchangeLists: ["hp", "mp", "atk", "str", "dex", "int", "def"],
       exchangeListValue: [],
       inventoryView: false,
