@@ -20,6 +20,7 @@
         <router-link to="/d3-test">d3 test</router-link> |
         <router-link to="/d3-percent-test">d3 percent-test</router-link> |
         <router-link to="/d3-sensor-test">d3 sensor-test</router-link> |
+        <router-link to="/sign-up">회원 가입</router-link> |
       </nav>
       <router-view/>
     </div>
