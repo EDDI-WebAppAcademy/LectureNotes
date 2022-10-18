@@ -1,14 +1,10 @@
 package kr.eddi.demo.controller.jpa.member;
 
-import kr.eddi.demo.controller.jpa.member.request.BoardRequest;
-import kr.eddi.demo.entity.jpa.boards.Board;
-import kr.eddi.demo.service.jpa.board.BoardService;
+import kr.eddi.demo.controller.jpa.member.form.MemberRegisterForm;
 import kr.eddi.demo.service.jpa.member.JpaMemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -24,5 +20,12 @@ public class JpaMemberController {
         log.info("emailValidation(): " + email);
 
         return service.emailValidation(email);
+    }
+
+    @PostMapping("/sign-up")
+    public Boolean signUp(@RequestBody MemberRegisterForm form) {
+        log.info("signUp: " + form);
+
+        return service.signUp(form.toMemberRegisterRequest());
     }
 }

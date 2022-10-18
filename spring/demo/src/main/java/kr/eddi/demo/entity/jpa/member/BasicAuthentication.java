@@ -11,10 +11,8 @@ import javax.persistence.*;
 @Entity
 @ToString(callSuper = true)
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorValue(Authentication.BASIC_AUTH)
 public class BasicAuthentication extends Authentication {
-
-    public static final String BASIC_AUTH = "BASIC";
 
     @Setter
     @Column(nullable = false)

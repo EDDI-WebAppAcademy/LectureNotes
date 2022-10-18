@@ -107,6 +107,14 @@ export default {
     }
   },
   methods: {
+    onSubmit () {
+      if (this.$refs.form.validate()) {
+        const { email, password, city, street, addressDetail, zipcode } = this
+        this.$emit("submit", { email, password, city, street, addressDetail, zipcode })
+      } else {
+        alert('올바른 정보를 입력하세요!')
+      }
+    },
     emailValidation () {
       const emailValid = this.email.match(
           /^(([^<>()[\]\\.,;:\s@]+(\.[^<>()[\]\\.,;:\s@]+)*)|(.+))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
