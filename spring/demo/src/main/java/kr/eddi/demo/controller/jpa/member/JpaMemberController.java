@@ -1,5 +1,6 @@
 package kr.eddi.demo.controller.jpa.member;
 
+import kr.eddi.demo.controller.jpa.member.form.MemberLoginForm;
 import kr.eddi.demo.controller.jpa.member.form.MemberRegisterForm;
 import kr.eddi.demo.service.jpa.member.JpaMemberService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,5 +28,12 @@ public class JpaMemberController {
         log.info("signUp: " + form);
 
         return service.signUp(form.toMemberRegisterRequest());
+    }
+
+    @PostMapping("/sign-in")
+    public String signIn(@RequestBody MemberLoginForm form) {
+        log.info("signIn: " + form);
+
+        return service.signIn(form.toLoginRequest());
     }
 }

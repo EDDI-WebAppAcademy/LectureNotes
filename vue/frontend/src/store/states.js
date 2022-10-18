@@ -13,4 +13,6 @@ export default {
 
     sensors: [],
     sensor: {},
+
+    isAuthenticated: false
 }

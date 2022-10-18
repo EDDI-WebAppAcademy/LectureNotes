@@ -33,6 +33,7 @@ import D3PercentTestView from "@/views/d3test/D3PercentTestView";
 import D3SensorTestView from "@/views/d3test/D3SensorTestView";
 
 import SignUpView from "@/views/account/SignUpView";
+import SignInView from "@/views/account/SignInView";
 
 Vue.use(VueRouter)
 
@@ -187,7 +188,11 @@ const routes = [
     name: 'SignUpView',
     component: SignUpView
   },
-
+  {
+    path: '/sign-in',
+    name: 'SignInView',
+    component: SignInView
+  },
 
 
 ]

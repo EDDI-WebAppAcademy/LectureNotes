@@ -21,6 +21,7 @@
         <router-link to="/d3-percent-test">d3 percent-test</router-link> |
         <router-link to="/d3-sensor-test">d3 sensor-test</router-link> |
         <router-link to="/sign-up">회원 가입</router-link> |
+        <router-link to="/sign-in">로그인</router-link> |
       </nav>
       <router-view/>
     </div>
