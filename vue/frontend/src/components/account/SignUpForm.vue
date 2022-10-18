@@ -69,6 +69,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "SignUpForm",
   data () {
@@ -120,17 +122,17 @@ export default {
       );
 
       if (emailValid) {
-
-        // axios
-        const res = true
-
-        if (res) {
-          alert("사용 가능한 이메일입니다!")
-          this.emailPass = true;
-        } else {
-          alert("중복된 이메일입니다!")
-          this.emailPass = false;
-        }
+        const {email} = this
+        axios.post(`http://localhost:7777/58th/member/check-email/${email}`)
+            .then((res) => {
+              if (res.data) {
+                alert("사용 가능한 이메일입니다!")
+                this.emailPass = true
+              } else {
+                alert("중복된 이메일입니다!")
+                this.emailPass = false
+              }
+            })
       }
     },
     callDaumAddressApi () {
