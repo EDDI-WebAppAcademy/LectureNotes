@@ -13,7 +13,7 @@ class DemoApplicationTests {
 	private MemberTestRepository repository;
 
 	@Test
-	void contextLoads() {
+	void registerMemberTest() {
 		MemberTest memberTest = new MemberTest("test", "gogosing");
 
 		repository.save(memberTest);
