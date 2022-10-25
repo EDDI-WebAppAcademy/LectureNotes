@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_ui/components/custom_form.dart';
-import 'package:flutter_login_ui/size.dart';
+import 'package:flutter_login_ui/utility/size.dart';
 
 import '../components/logo.dart';
 
@@ -14,9 +14,9 @@ class LoginPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            SizedBox(height: small_gap,),
-            Logo(title: "Login",),
-            SizedBox(height: small_gap,),
+            const SizedBox(height: small_gap,),
+            const Logo(title: "Login",),
+            const SizedBox(height: small_gap,),
             CustomForm(),
           ],
         ),

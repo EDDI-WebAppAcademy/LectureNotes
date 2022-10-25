@@ -9,8 +9,8 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image(image: AssetImage("assets/EDDI_eng.png")),
-        Text(title, style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),)
+        const Image(image: AssetImage("assets/EDDI_eng.png")),
+        Text(title, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),)
       ],
     );
   }

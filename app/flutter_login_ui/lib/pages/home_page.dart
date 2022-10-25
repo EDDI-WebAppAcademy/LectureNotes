@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/logo.dart';
-import '../size.dart';
+import '../utility/size.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,14 +13,14 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: ListView(
             children: [
-              SizedBox(height: small_gap,),
-              Logo(title: "Login",),
-              SizedBox(height: small_gap,),
+              const SizedBox(height: small_gap,),
+              const Logo(title: "Login",),
+              const SizedBox(height: small_gap,),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("서비스 시작!"),
+                child: const Text("서비스 시작!"),
               )
             ],
           ),
