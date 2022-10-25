@@ -60,6 +60,10 @@ public class JpaMemberServiceImpl implements JpaMemberService {
         if (maybeMember.isPresent()) {
             JpaMember member = maybeMember.get();
 
+            log.info("member email: " + member.getEmail());
+            log.info("request email: " + request.getEmail());
+            log.info("request password: " + request.getPassword());
+
             if (!member.isRightPassword(request.getPassword())) {
                 throw new RuntimeException("패스워드가 잘못됨!");
             }
