@@ -35,6 +35,8 @@ import D3SensorTestView from "@/views/d3test/D3SensorTestView";
 import SignUpView from "@/views/account/SignUpView";
 import SignInView from "@/views/account/SignInView";
 
+import CarouselView from "@/views/support/CarouselView";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -192,6 +194,11 @@ const routes = [
     path: '/sign-in',
     name: 'SignInView',
     component: SignInView
+  },
+  {
+    path: '/carousel-test',
+    name: 'CarouselView',
+    component: CarouselView
   },
 
 
