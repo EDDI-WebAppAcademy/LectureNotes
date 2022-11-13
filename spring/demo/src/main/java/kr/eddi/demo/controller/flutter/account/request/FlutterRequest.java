@@ -1,4 +1,4 @@
-package kr.eddi.demo.controller.flutter.request;
+package kr.eddi.demo.controller.flutter.account.request;
 
 import lombok.Data;
 

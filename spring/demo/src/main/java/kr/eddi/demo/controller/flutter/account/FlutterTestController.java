@@ -1,6 +1,6 @@
-package kr.eddi.demo.controller.flutter;
+package kr.eddi.demo.controller.flutter.account;
 
-import kr.eddi.demo.controller.flutter.request.FlutterRequest;
+import kr.eddi.demo.controller.flutter.account.request.FlutterRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
